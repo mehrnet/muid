@@ -201,3 +201,16 @@ test('API Regex Validator: ^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', () => {
   assert.equal(API_TOKEN_REGEX.test('6GQ46U:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ'), false); // ID must be normalized lowercase
 });
 
+test('Self-contained syntax highlighter highlights keywords, strings, comments and numbers', async () => {
+  const { highlightCode } = await import('../app.js');
+  const code = `// comment\nconst a = "hello <world>";\nreturn 12345;\n`;
+  const highlighted = highlightCode(code);
+
+  assert.ok(highlighted.includes('<span class="tok-comment">// comment</span>'));
+  assert.ok(highlighted.includes('<span class="tok-keyword">const</span>'));
+  assert.ok(highlighted.includes('<span class="tok-string">&quot;hello &lt;world&gt;&quot;</span>'));
+  assert.ok(highlighted.includes('<span class="tok-keyword">return</span>'));
+  assert.ok(highlighted.includes('<span class="tok-number">12345</span>'));
+});
+
+

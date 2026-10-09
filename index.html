@@ -86,7 +86,7 @@
        ============================================= -->
   <header class="nav">
     <div class="nav-container">
-      <a href="/" class="nav-brand" aria-label="Mehr Unique ID">
+      <a href="/" class="nav-brand" data-route="/" aria-label="Mehr Unique ID">
         <svg class="brand-cube" viewBox="0 0 60 60" fill="none" shape-rendering="geometricPrecision" aria-hidden="true">
           <defs>
             <linearGradient id="navTop" gradientUnits="userSpaceOnUse" x1="8" y1="6" x2="47.2" y2="27.8">
@@ -110,9 +110,9 @@
       </a>
 
       <nav class="nav-center" aria-label="Navigation">
-        <a href="#credentials" class="nav-link" data-i18n="nav.credentials">Credentials</a>
-        <a href="#spec" class="nav-link" data-i18n="nav.spec">Specification</a>
-        <a href="#code" class="nav-link" data-i18n="nav.code">Examples</a>
+        <a href="/credentials" class="nav-link active" data-route="/credentials" data-i18n="nav.credentials">Credentials</a>
+        <a href="/spec" class="nav-link" data-route="/spec" data-i18n="nav.spec">Specification</a>
+        <a href="/examples" class="nav-link" data-route="/examples" data-i18n="nav.code">Examples</a>
       </nav>
 
       <div class="nav-right">
@@ -175,7 +175,10 @@
        HERO & LIVE CREDENTIALS CARD
        ============================================= -->
   <main>
-    <section class="hero-compact" id="credentials">
+    <!-- =============================================
+         VIEW 1: LIVE CREDENTIALS (/ or /credentials)
+         ============================================= -->
+    <div class="page-view active" id="view-credentials">
       <div class="container">
         <div class="hero-header">
           <h1 class="hero-title-compact" data-i18n="hero.title">Mehr Unique ID <span class="highlight">(MUID)</span></h1>
@@ -266,13 +269,18 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- =============================================
-         COMPACT SPECIFICATION
+         VIEW 2: SPECIFICATION (/spec)
          ============================================= -->
-    <section class="spec-compact" id="spec">
+    <div class="page-view" id="view-spec">
       <div class="container">
+        <div class="hero-header">
+          <h1 class="hero-title-compact" data-i18n="spec.title">MUID Specification</h1>
+          <p class="hero-subtitle" data-i18n="spec.subtitle">Technical architecture, Tehran epoch offset, numeric BigInt representation, and token security parameters.</p>
+        </div>
+
         <div class="spec-grid-compact">
           <!-- Card 1: ID Math & Epoch -->
           <div class="spec-card">
@@ -307,14 +315,17 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- =============================================
-         COMPACT CODE EXAMPLES
+         VIEW 3: IMPLEMENTATION EXAMPLES (/examples)
          ============================================= -->
-    <section class="code-section-compact" id="code">
+    <div class="page-view" id="view-examples">
       <div class="container">
-        <h2 class="section-title-sm" data-i18n="nav.code">Implementation Examples</h2>
+        <div class="hero-header">
+          <h1 class="hero-title-compact" data-i18n="nav.code">Implementation Examples</h1>
+          <p class="hero-subtitle" data-i18n="examples.subtitle">Self-contained production implementations in Go, JavaScript, TypeScript, Python, PHP, and Bash.</p>
+        </div>
 
         <div class="lang-bar-compact" role="tablist">
           <button type="button" class="lang-btn-sm active" data-lang-panel="code-go">Go</button>
@@ -598,23 +609,8 @@ echo "$(generate_muid):$(generate_secret)"
 </code></pre>
         </div>
       </div>
-    </section>
-  </main>
-
-  <!-- =============================================
-       COMPACT FOOTER (NO GITHUB LINKS)
-       ============================================= -->
-  <footer class="footer-compact">
-    <div class="container footer-inner">
-      <div>Proprietary &copy; 2026 <a href="https://mehrnet.com" style="color:var(--accent);">Mehrnet</a>. All rights reserved.</div>
-      <div class="footer-links-sm">
-        <a href="https://mehrnet.com" target="_blank" rel="noopener">Mehrnet</a>
-        <a href="https://swap.mehrnet.com" target="_blank" rel="noopener">MehrSwap</a>
-        <a href="https://notify.mehrnet.com" target="_blank" rel="noopener">MehrNotify</a>
-        <a href="https://rates.mehrnet.com" target="_blank" rel="noopener">MehrRates</a>
-      </div>
     </div>
-  </footer>
+  </main>
 
   <!-- Toast Notice -->
   <div id="toast-notice" class="toast-notice">

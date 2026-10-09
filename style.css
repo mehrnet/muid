@@ -139,8 +139,6 @@ html {
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.5;
-  scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
@@ -224,6 +222,7 @@ code, pre, .font-mono {
   align-items: center;
   gap: var(--space-2);
   font-weight: 700;
+  cursor: pointer;
 }
 
 .brand-cube {
@@ -242,29 +241,30 @@ code, pre, .font-mono {
 }
 
 .nav-center {
-  display: none;
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-}
-
-@media (min-width: 640px) {
-  .nav-center {
-    display: flex;
-  }
+  gap: var(--space-1);
 }
 
 .nav-link {
-  padding: 0.35rem 0.65rem;
+  padding: 0.35rem 0.75rem;
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   transition: all var(--duration-fast);
+  cursor: pointer;
 }
 
 .nav-link:hover {
   color: var(--text-primary);
   background-color: var(--badge-bg);
+}
+
+.nav-link.active {
+  color: var(--accent);
+  background-color: var(--accent-subtle);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
 }
 
 .nav-right {
@@ -370,14 +370,31 @@ html[dir="rtl"] .dropdown-menu {
 }
 
 /* =============================================
-   HERO & LIVE CREDENTIALS CARD
+   PAGE VIEWS (SPA SWITCHING)
    ============================================= */
-.hero-compact {
-  padding: var(--space-6) 0 var(--space-4);
-  background: radial-gradient(circle at 50% 0%, var(--accent-subtle) 0%, transparent 60%);
-  border-bottom: 1px solid var(--border);
+.page-view {
+  display: none;
+  animation: viewFadeIn 0.15s ease-out;
+  padding: var(--space-6) 0 var(--space-8);
+  flex: 1;
 }
 
+.page-view.active {
+  display: block;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes viewFadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero / Header in Pages */
 .hero-header {
   margin-bottom: var(--space-4);
 }
@@ -619,15 +636,11 @@ html[dir="rtl"] .dropdown-menu {
 /* =============================================
    SPECIFICATION SECTION (COMPACT)
    ============================================= */
-.spec-compact {
-  padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--border);
-}
-
 .spec-grid-compact {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
+  margin-top: var(--space-4);
 }
 
 @media (min-width: 680px) {
@@ -684,11 +697,6 @@ html[dir="rtl"] .dropdown-menu {
 /* =============================================
    CODE IMPLEMENTATIONS (COMPACT TABS)
    ============================================= */
-.code-section-compact {
-  padding: var(--space-6) 0;
-  border-bottom: 1px solid var(--border);
-}
-
 .section-title-sm {
   font-size: var(--text-lg);
   font-weight: 800;
@@ -752,47 +760,49 @@ html[dir="rtl"] .dropdown-menu {
   font-size: var(--text-xs);
   line-height: 1.55;
   color: #e2e8f0;
-  max-height: 380px;
+  max-height: 480px;
 }
 [data-theme="light"] .code-pre-sm { color: #1e293b; }
 
 /* =============================================
-   FOOTER (COMPACT)
+   SELF-CONTAINED SYNTAX HIGHLIGHTING TOKENS
    ============================================= */
-.footer-compact {
-  padding: var(--space-5) 0;
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border);
-  margin-top: auto;
-  font-size: var(--text-xs);
-  color: var(--text-dim);
+.tok-keyword {
+  color: #f59e0b;
+  font-weight: 600;
+}
+.tok-string {
+  color: #34d399;
+}
+.tok-comment {
+  color: #64748b;
+  font-style: italic;
+}
+.tok-number {
+  color: #38bdf8;
+}
+.tok-type {
+  color: #c084fc;
+  font-weight: 600;
 }
 
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  align-items: center;
-  justify-content: space-between;
+[data-theme="light"] .tok-keyword {
+  color: #d97706;
+  font-weight: 600;
 }
-
-@media (min-width: 640px) {
-  .footer-inner {
-    flex-direction: row;
-  }
+[data-theme="light"] .tok-string {
+  color: #059669;
 }
-
-.footer-links-sm {
-  display: flex;
-  gap: var(--space-4);
+[data-theme="light"] .tok-comment {
+  color: #94a3b8;
+  font-style: italic;
 }
-
-.footer-links-sm a {
-  color: var(--text-secondary);
+[data-theme="light"] .tok-number {
+  color: #0284c7;
 }
-
-.footer-links-sm a:hover {
-  color: var(--accent);
+[data-theme="light"] .tok-type {
+  color: #7c3aed;
+  font-weight: 600;
 }
 
 /* Toast */

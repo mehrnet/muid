@@ -164,8 +164,11 @@ const TRANSLATIONS = {
     "pref.theme": "Theme",
     "pref.language": "Language",
     "hero.badge": "Standard Spec",
-    "hero.title": "Mehr Unique ID (MUID)",
+    "hero.title": "Mehr Unique ID <span class=\"highlight\">(MUID)</span>",
     "hero.subtitle": "64-bit BigInt database IDs, Base36 case-insensitive identifiers, and 256-bit Base62 account authentication tokens.",
+    "spec.title": "MUID Specification",
+    "spec.subtitle": "Technical architecture, Tehran epoch offset, numeric BigInt representation, and token security parameters.",
+    "examples.subtitle": "Self-contained production implementations in Go, JavaScript, TypeScript, Python, PHP, and Bash.",
     "btn.regenerate": "Regenerate",
     "label.account_id": "Account ID (Base36)",
     "label.raw_id": "Raw Database ID (BigInt)",
@@ -182,8 +185,11 @@ const TRANSLATIONS = {
     "pref.theme": "پوسته",
     "pref.language": "زبان",
     "hero.badge": "استاندارد رسمی",
-    "hero.title": "شناسه یکتای مهر (MUID)",
+    "hero.title": "شناسه یکتای مهر <span class=\"highlight\">(MUID)</span>",
     "hero.subtitle": "شناسه‌های ۶۴ بیتی در دیتابیس، نمایش فشرده Base36 و توکن‌های ۲۵۶ بیتی امنیتی Base62.",
+    "spec.title": "مشخصات فنی شناسه یکتای مهر",
+    "spec.subtitle": "معماری فنی، مبدا زمانی تهران، ساختار عدد بزرگ دیتابیس و اعتبارسنجی توکن.",
+    "examples.subtitle": "پیاده‌سازی مستقل در زبان‌های Go، جاوااسکریپت، تایپ‌اسکریپت، پایتون، PHP و Bash.",
     "btn.regenerate": "تولید مجدد",
     "label.account_id": "شناسه حساب (Base36)",
     "label.raw_id": "شناسه خام دیتابیس (BigInt)",
@@ -196,14 +202,18 @@ const TRANSLATIONS = {
 };
 
 /* =============================================
-   CONTROLLER
+   CONTROLLER & INITIALIZATION
    ============================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
-  initPreferences();
-  initCredentialsController();
-  initCodeTabs();
-});
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    initPreferences();
+    initCredentialsController();
+    initCodeTabs();
+    initRouter();
+    highlightAllCodeBlocks();
+  });
+}
 
 function showToast(msg) {
   const toast = document.getElementById('toast-notice');
@@ -213,17 +223,30 @@ function showToast(msg) {
   setTimeout(() => toast.classList.remove('show'), 1800);
 }
 
-window.copySnippet = function(text, btnElement) {
-  navigator.clipboard.writeText(text).then(() => {
-    const locale = localStorage.getItem('mehr_locale') || 'en';
-    showToast(TRANSLATIONS[locale]?.copied || 'Copied!');
-    if (btnElement) {
-      const orig = btnElement.innerHTML;
-      btnElement.innerHTML = `<svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#check"></use></svg>`;
-      setTimeout(() => btnElement.innerHTML = orig, 1200);
+if (typeof window !== 'undefined') {
+  window.copySnippet = function(textOrElement, btnElement) {
+    let content = '';
+    if (typeof textOrElement === 'string') {
+      content = textOrElement;
+    } else if (textOrElement && textOrElement.dataset && textOrElement.dataset.raw) {
+      content = textOrElement.dataset.raw;
+    } else if (textOrElement && textOrElement.innerText) {
+      content = textOrElement.innerText;
+    } else if (textOrElement && textOrElement.textContent) {
+      content = textOrElement.textContent;
     }
-  });
-};
+
+    navigator.clipboard.writeText(content).then(() => {
+      const locale = localStorage.getItem('mehr_locale') || 'en';
+      showToast(TRANSLATIONS[locale]?.copied || 'Copied!');
+      if (btnElement) {
+        const orig = btnElement.innerHTML;
+        btnElement.innerHTML = `<svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#check"></use></svg>`;
+        setTimeout(() => btnElement.innerHTML = orig, 1200);
+      }
+    });
+  };
+}
 
 function initCredentialsController() {
   const elAccId = document.getElementById('cred-account-id');
@@ -370,7 +393,13 @@ function setLocale(lang, save = true) {
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
-    if (dict[k]) el.textContent = dict[k];
+    if (dict[k]) {
+      if (dict[k].includes('<')) {
+        el.innerHTML = dict[k];
+      } else {
+        el.textContent = dict[k];
+      }
+    }
   });
   const input = document.getElementById('inspector-input');
   if (input && dict["inspector.placeholder"]) {
@@ -392,5 +421,126 @@ function initCodeTabs() {
       const panel = document.getElementById(id);
       if (panel) panel.classList.add('active');
     });
+  });
+}
+
+/* =============================================
+   SPA ROUTER
+   ============================================= */
+
+function initRouter() {
+  function getNormalizedRoute(path) {
+    const clean = (path || '/').split('?')[0].split('#')[0].replace(/\/+$/, '') || '/';
+    if (clean === '/spec') return '/spec';
+    if (clean === '/examples' || clean === '/code') return '/examples';
+    return '/credentials';
+  }
+
+  function navigateTo(targetPath, push = true) {
+    const normalized = getNormalizedRoute(targetPath);
+
+    const views = {
+      '/credentials': document.getElementById('view-credentials'),
+      '/spec': document.getElementById('view-spec'),
+      '/examples': document.getElementById('view-examples')
+    };
+
+    Object.entries(views).forEach(([route, el]) => {
+      if (!el) return;
+      if (route === normalized) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active');
+      }
+    });
+
+    document.querySelectorAll('.nav-link[data-route]').forEach(link => {
+      const route = link.getAttribute('data-route');
+      if (route === normalized || (normalized === '/credentials' && (route === '/' || route === '/credentials'))) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    if (push) {
+      const pushUrl = targetPath === '/' ? '/' : normalized;
+      if (window.location.pathname !== pushUrl) {
+        window.history.pushState(null, '', pushUrl);
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-route], a.nav-brand');
+    if (!link) return;
+
+    const route = link.getAttribute('data-route') || link.getAttribute('href');
+    if (route && (route.startsWith('/') || route.startsWith('#'))) {
+      e.preventDefault();
+      const target = route.startsWith('#') ? `/${route.slice(1)}` : route;
+      navigateTo(target, true);
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    navigateTo(window.location.pathname, false);
+  });
+
+  // Initial routing based on current URL path
+  navigateTo(window.location.pathname, false);
+}
+
+/* =============================================
+   SELF-CONTAINED SYNTAX HIGHLIGHTER
+   ============================================= */
+
+const KEYWORDS = new Set([
+  'package', 'import', 'const', 'var', 'func', 'function', 'export', 'def',
+  'return', 'if', 'else', 'elif', 'for', 'while', 'do', 'done', 'then', 'fi',
+  'case', 'esac', 'class', 'type', 'struct', 'interface', 'new', 'make',
+  'throw', 'try', 'catch', 'finally', 'let', 'from', 'as', 'with', 'in', 'of',
+  'local', 'echo', 'break', 'continue', 'array'
+]);
+
+const TYPES_AND_LITERALS = new Set([
+  'int', 'int64', 'string', 'bigint', 'bool', 'byte', 'error', 'rune',
+  'true', 'false', 'null', 'nil', 'None', 'True', 'False',
+  'Time', 'Uint8Array', 'Uint32Array', 'Date', 'tuple', 'dict',
+  'BigInt', 'Math', 'crypto'
+]);
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+export function highlightCode(rawCode) {
+  const tokenRegex = /(\/\/[^\n]*|\/\*[\s\S]*?\*\/|#[^\n]*)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`)|(\b0x[a-fA-F0-9]+\b|\b\d+n?\b)|(\b[a-zA-Z_][a-zA-Z0-9_]*\b)|([&<>])/g;
+  return rawCode.replace(tokenRegex, (match, comment, str, num, ident, htmlChar) => {
+    if (comment) return `<span class="tok-comment">${escapeHtml(comment)}</span>`;
+    if (str) return `<span class="tok-string">${escapeHtml(str)}</span>`;
+    if (num) return `<span class="tok-number">${num}</span>`;
+    if (ident) {
+      if (KEYWORDS.has(ident)) return `<span class="tok-keyword">${ident}</span>`;
+      if (TYPES_AND_LITERALS.has(ident)) return `<span class="tok-type">${ident}</span>`;
+      return ident;
+    }
+    if (htmlChar) return escapeHtml(htmlChar);
+    return match;
+  });
+}
+
+function highlightAllCodeBlocks() {
+  document.querySelectorAll('pre code').forEach(block => {
+    if (!block.dataset.raw) {
+      block.dataset.raw = block.textContent;
+    }
+    block.innerHTML = highlightCode(block.dataset.raw);
   });
 }
