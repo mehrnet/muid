@@ -18,10 +18,68 @@
     })();
   </script>
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- =============================================
+       INLINE SVG SYMBOLS (ZERO EXTERNAL DEPENDENCY)
+       ============================================= -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="moon" viewBox="0 0 24 24">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="contrast" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="flag-us" viewBox="0 0 24 24">
+      <rect x="2" y="4.5" width="20" height="15" rx="2.5" fill="#f8fafc" />
+      <path d="M2 6.5h20M2 9.5h20M2 12.5h20M2 15.5h20M2 18h20" stroke="#ef4444" stroke-width="1.3" />
+      <rect x="2" y="4.5" width="9.5" height="8" rx="1.5" fill="#1d4ed8" />
+      <circle cx="4.8" cy="7" r="0.75" fill="#ffffff" />
+      <circle cx="8.6" cy="7" r="0.75" fill="#ffffff" />
+      <circle cx="6.7" cy="9.2" r="0.75" fill="#ffffff" />
+    </symbol>
+    <symbol id="flag-ir" viewBox="0 0 24 24">
+      <rect x="2" y="4.5" width="20" height="15" rx="2.5" fill="#ffffff" />
+      <path d="M2 4.5h20v5H2z" fill="#16a34a" />
+      <path d="M2 14.5h20v5H2z" fill="#dc2626" />
+      <circle cx="12" cy="12" r="1.8" fill="#dc2626" />
+      <path d="M12 10.5v3M10.5 12h3" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" />
+    </symbol>
+    <symbol id="chevron-down" viewBox="0 0 24 24">
+      <path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="copy" viewBox="0 0 24 24">
+      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24">
+      <path d="m5 12 4 4L19 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="refresh" viewBox="0 0 24 24">
+      <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="hash" viewBox="0 0 24 24">
+      <line x1="4" y1="9" x2="20" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="10" y1="3" x2="8" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="16" y1="3" x2="14" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="zap" viewBox="0 0 24 24">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="lock" viewBox="0 0 24 24">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
 
   <!-- =============================================
        COMPACT HEADER (NO GITHUB LINK)
@@ -63,15 +121,15 @@
           <button type="button" class="pref-compact-trigger" data-dropdown-toggle aria-haspopup="dialog" aria-expanded="false" aria-label="Preferences">
             <span class="pref-trigger-combo">
               <svg class="icon pref-theme-icon" data-pref-theme-icon viewBox="0 0 24 24" aria-hidden="true">
-                <use href="/icons.svg#moon"></use>
+                <use href="#moon"></use>
               </svg>
               <span class="pref-pipe" aria-hidden="true">|</span>
               <svg class="icon pref-flag pref-lang-icon" data-pref-lang-icon viewBox="0 0 24 24" aria-hidden="true">
-                <use href="/icons.svg#flag-us"></use>
+                <use href="#flag-us"></use>
               </svg>
             </span>
             <svg class="icon" viewBox="0 0 24 24" style="width: 0.9rem; height: 0.9rem;" aria-hidden="true">
-              <use href="/icons.svg#chevron-down"></use>
+              <use href="#chevron-down"></use>
             </svg>
           </button>
 
@@ -80,15 +138,15 @@
               <span class="form-hint" data-i18n="pref.theme">Theme</span>
               <div class="theme-grid">
                 <button type="button" class="theme-btn" data-theme-val="light">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#sun"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#sun"></use></svg>
                   <span>Light</span>
                 </button>
                 <button type="button" class="theme-btn active" data-theme-val="dark">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#moon"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#moon"></use></svg>
                   <span>Dark</span>
                 </button>
                 <button type="button" class="theme-btn" data-theme-val="black">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#contrast"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#contrast"></use></svg>
                   <span>Black</span>
                 </button>
               </div>
@@ -98,11 +156,11 @@
               <span class="form-hint" data-i18n="pref.language">Language</span>
               <div class="lang-grid">
                 <button type="button" class="lang-btn active" data-lang-val="en">
-                  <svg class="icon pref-flag" viewBox="0 0 24 24"><use href="/icons.svg#flag-us"></use></svg>
+                  <svg class="icon pref-flag" viewBox="0 0 24 24"><use href="#flag-us"></use></svg>
                   <span>English</span>
                 </button>
                 <button type="button" class="lang-btn" data-lang-val="fa">
-                  <svg class="icon pref-flag" viewBox="0 0 24 24"><use href="/icons.svg#flag-ir"></use></svg>
+                  <svg class="icon pref-flag" viewBox="0 0 24 24"><use href="#flag-ir"></use></svg>
                   <span>فارسی</span>
                 </button>
               </div>
@@ -128,12 +186,12 @@
         <div class="creds-card">
           <div class="creds-card-head">
             <span class="creds-card-title">
-              <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#zap"></use></svg>
+              <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#zap"></use></svg>
               <span>Live Account Credentials</span>
             </span>
 
             <button type="button" id="btn-regenerate" class="regenerate-btn" title="Generate New Client-Side Credentials">
-              <svg class="icon regenerate-icon" viewBox="0 0 24 24"><use href="/icons.svg#refresh"></use></svg>
+              <svg class="icon regenerate-icon" viewBox="0 0 24 24"><use href="#refresh"></use></svg>
               <span data-i18n="btn.regenerate">Regenerate</span>
             </button>
           </div>
@@ -147,7 +205,7 @@
               <div class="creds-val-wrap">
                 <span class="creds-val accent" id="cred-account-id">6gq46u</span>
                 <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-account-id').textContent, this)" title="Copy ID">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#copy"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
                 </button>
               </div>
             </div>
@@ -160,7 +218,7 @@
               <div class="creds-val-wrap">
                 <span class="creds-val" id="cred-raw-id">13954201234</span>
                 <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-raw-id').textContent, this)" title="Copy Raw ID">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#copy"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
                 </button>
               </div>
             </div>
@@ -173,7 +231,7 @@
               <div class="creds-val-wrap">
                 <span class="creds-val secret" id="cred-secret">1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ</span>
                 <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-secret').textContent, this)" title="Copy Secret">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#copy"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
                 </button>
               </div>
             </div>
@@ -186,7 +244,7 @@
               <div class="creds-val-wrap">
                 <span class="creds-val" id="cred-token" style="color: var(--text-primary);">6gq46u:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ</span>
                 <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-token').textContent, this)" title="Copy Token">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#copy"></use></svg>
+                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
                 </button>
               </div>
             </div>
@@ -219,7 +277,7 @@
           <!-- Card 1: ID Math & Epoch -->
           <div class="spec-card">
             <h3>
-              <svg class="icon" viewBox="0 0 24 24" style="color:var(--accent);"><use href="/icons.svg#hash"></use></svg>
+              <svg class="icon" viewBox="0 0 24 24" style="color:var(--accent);"><use href="#hash"></use></svg>
               <span>1. Epoch & Numeric ID</span>
             </h3>
             <p>Generated sequentially from the fixed Tehran epoch with 4 random digits:</p>
@@ -234,7 +292,7 @@
           <!-- Card 2: Secret & Token Regex -->
           <div class="spec-card">
             <h3>
-              <svg class="icon" viewBox="0 0 24 24" style="color:var(--success);"><use href="/icons.svg#lock"></use></svg>
+              <svg class="icon" viewBox="0 0 24 24" style="color:var(--success);"><use href="#lock"></use></svg>
               <span>2. Secret & API Regex</span>
             </h3>
             <p>256-bit security hash and standardized authorization token regex:</p>
@@ -560,10 +618,10 @@ echo "$(generate_muid):$(generate_secret)"
 
   <!-- Toast Notice -->
   <div id="toast-notice" class="toast-notice">
-    <svg class="icon" viewBox="0 0 24 24" style="color: var(--success); width:1rem; height:1rem;"><use href="/icons.svg#check"></use></svg>
+    <svg class="icon" viewBox="0 0 24 24" style="color: var(--success); width:1rem; height:1rem;"><use href="#check"></use></svg>
     <span class="toast-msg">Copied!</span>
   </div>
 
-  <script type="module" src="/app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

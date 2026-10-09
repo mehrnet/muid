@@ -219,7 +219,7 @@ window.copySnippet = function(text, btnElement) {
     showToast(TRANSLATIONS[locale]?.copied || 'Copied!');
     if (btnElement) {
       const orig = btnElement.innerHTML;
-      btnElement.innerHTML = `<svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="/icons.svg#check"></use></svg>`;
+      btnElement.innerHTML = `<svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#check"></use></svg>`;
       setTimeout(() => btnElement.innerHTML = orig, 1200);
     }
   });
@@ -350,7 +350,7 @@ function setTheme(theme, save = true) {
 
   const iconName = theme === 'light' ? 'sun' : (theme === 'black' ? 'contrast' : 'moon');
   const icon = document.querySelector('[data-pref-theme-icon] use');
-  if (icon) icon.setAttribute('href', `/icons.svg#${iconName}`);
+  if (icon) icon.setAttribute('href', `#${iconName}`);
 }
 
 function setLocale(lang, save = true) {
@@ -365,7 +365,7 @@ function setLocale(lang, save = true) {
 
   const flagName = lang === 'fa' ? 'flag-ir' : 'flag-us';
   const flag = document.querySelector('[data-pref-lang-icon] use');
-  if (flag) flag.setAttribute('href', `/icons.svg#${flagName}`);
+  if (flag) flag.setAttribute('href', `#${flagName}`);
 
   const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
   document.querySelectorAll('[data-i18n]').forEach(el => {
