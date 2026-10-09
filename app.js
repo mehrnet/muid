@@ -536,11 +536,21 @@ export function highlightCode(rawCode) {
   });
 }
 
+export function highlightCodeWithLineNumbers(rawCode) {
+  const clean = rawCode.replace(/\r\n/g, '\n').replace(/\n$/, '');
+  const lines = clean.split('\n');
+  return lines.map((line, idx) => {
+    const lineNum = idx + 1;
+    const highlighted = highlightCode(line);
+    return `<span class="code-line"><span class="line-num">${lineNum}</span><span class="line-content">${highlighted || ' '}</span></span>`;
+  }).join('');
+}
+
 function highlightAllCodeBlocks() {
   document.querySelectorAll('pre code').forEach(block => {
     if (!block.dataset.raw) {
       block.dataset.raw = block.textContent;
     }
-    block.innerHTML = highlightCode(block.dataset.raw);
+    block.innerHTML = highlightCodeWithLineNumbers(block.dataset.raw);
   });
 }

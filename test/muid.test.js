@@ -213,4 +213,17 @@ test('Self-contained syntax highlighter highlights keywords, strings, comments a
   assert.ok(highlighted.includes('<span class="tok-number">12345</span>'));
 });
 
+test('Code blocks format line numbers with code-line wrappers', async () => {
+  const { highlightCodeWithLineNumbers } = await import('../app.js');
+  const code = `package muid\nfunc Hello() {\n  return 42\n}`;
+  const html = highlightCodeWithLineNumbers(code);
+
+  assert.ok(html.includes('<span class="code-line"><span class="line-num">1</span>'));
+  assert.ok(html.includes('<span class="code-line"><span class="line-num">2</span>'));
+  assert.ok(html.includes('<span class="code-line"><span class="line-num">3</span>'));
+  assert.ok(html.includes('<span class="tok-keyword">package</span>'));
+  assert.ok(html.includes('<span class="tok-number">42</span>'));
+});
+
+
 

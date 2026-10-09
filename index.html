@@ -340,7 +340,7 @@
         <div class="code-panel-sm active" id="code-go">
           <div class="code-head-sm">
             <span>muid.go</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-go').innerText, this)">Copy Code</button>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-go'), this)">Copy Code</button>
           </div>
           <pre class="code-pre-sm"><code id="src-go">package muid
 
@@ -409,7 +409,7 @@ func GenerateSecret() (string, error) {
         <div class="code-panel-sm" id="code-js">
           <div class="code-head-sm">
             <span>muid.js</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-js').innerText, this)">Copy Code</button>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-js'), this)">Copy Code</button>
           </div>
           <pre class="code-pre-sm"><code id="src-js">const EPOCH = 1790022600n; // 2026-09-22 00:00:00 UTC+3:30
 const B62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
@@ -450,7 +450,7 @@ export function generateSecret() {
         <div class="code-panel-sm" id="code-ts">
           <div class="code-head-sm">
             <span>muid.ts</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-ts').innerText, this)">Copy Code</button>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-ts'), this)">Copy Code</button>
           </div>
           <pre class="code-pre-sm"><code id="src-ts">export const EPOCH: bigint = 1790022600n;
 export const API_TOKEN_REGEX = /^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/;
@@ -491,7 +491,7 @@ export function generateSecret(): string {
         <div class="code-panel-sm" id="code-py">
           <div class="code-head-sm">
             <span>muid.py</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-py').innerText, this)">Copy Code</button>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-py'), this)">Copy Code</button>
           </div>
           <pre class="code-pre-sm"><code id="src-py">import re, secrets, time
 
@@ -530,7 +530,7 @@ def generate_secret() -> str:
         <div class="code-panel-sm" id="code-php">
           <div class="code-head-sm">
             <span>muid.php</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-php').innerText, this)">Copy Code</button>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-php'), this)">Copy Code</button>
           </div>
           <pre class="code-pre-sm"><code id="src-php">&lt;?php
 const EPOCH = 1790022600;
@@ -570,7 +570,7 @@ function generateSecret(): string {
         <div class="code-panel-sm" id="code-bash">
           <div class="code-head-sm">
             <span>muid.sh</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-bash').innerText, this)">Copy Code</button>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-bash'), this)">Copy Code</button>
           </div>
           <pre class="code-pre-sm"><code id="src-bash">#!/usr/bin/env bash
 EPOCH=1790022600
