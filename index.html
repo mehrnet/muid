@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mehr Unique ID (MUID) | Specification & Tools</title>
+  <title>Mehr Unique ID (MUID) | Specification &amp; Tools</title>
   <meta name="description" content="Specification and interactive generator for Mehr Unique ID (MUID) — K-sortable 64-bit database IDs and 256-bit cryptographic account tokens.">
   <meta name="author" content="Mehrnet">
   <meta name="theme-color" content="#0c0f12">
@@ -24,9 +24,9 @@
 <body>
 
   <!-- =============================================
-       INLINE SVG SYMBOLS (ZERO EXTERNAL DEPENDENCY)
+       INLINE SVG SYMBOLS (ZERO EXTERNAL ASSETS)
        ============================================= -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
     <symbol id="sun" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
       <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -79,10 +79,53 @@
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+
+    <!-- Page Navigation Icons -->
+    <symbol id="nav-credentials" viewBox="0 0 24 24">
+      <rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="9" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M15 8h2m-2 4h2M7 16h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="nav-spec" viewBox="0 0 24 24">
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <polyline points="14 2 14 8 20 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="8" y1="13" x2="16" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <line x1="8" y1="17" x2="14" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="nav-examples" viewBox="0 0 24 24">
+      <polyline points="4 17 10 11 4 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="12" y1="19" x2="20" y2="19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Language Icons -->
+    <symbol id="lang-go" viewBox="0 0 24 24">
+      <path d="M4 12a8 8 0 0 1 14.9-4M20 12a8 8 0 0 1-13.8 5.4M13 12h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="lang-js" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M7 14.5v1.5a1.5 1.5 0 0 0 3 0V11M13.5 16.5c1.5.5 3-.5 3-2s-3-1.5-3-3 1.5-2.5 3-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="lang-ts" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M6 8h6M9 8v8M13.5 16.5c1.5.5 3-.5 3-2s-3-1.5-3-3 1.5-2.5 3-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="lang-py" viewBox="0 0 24 24">
+      <path d="M12 2C7.5 2 7 4 7 4v3h5v1H5S2 8 2 12.5 4 17 4 17h2v-3c0-1.5 1-2.5 2.5-2.5h5c1.5 0 2.5-1 2.5-2.5V4s.5-2-4-2zm-2.5 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M12 22c4.5 0 5-2 5-2v-3h-5v-1h7s3 0 3-4.5S20 7 20 7h-2v3c0 1.5-1 2.5-2.5 2.5h-5c-1.5 0-2.5 1-2.5 2.5v7s-.5 2 4 2zm2.5-2a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="lang-php" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="12" rx="10" ry="7" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M6.5 14.5V9.5h2.5a1.5 1.5 0 0 1 0 3H6.5M12 9.5v5m-1.5-2.5h3M15.5 14.5V9.5h2.5a1.5 1.5 0 0 1 0 3h-2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="lang-sh" viewBox="0 0 24 24">
+      <rect x="2" y="3" width="20" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+      <polyline points="6 9 9 12 6 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="12" y1="15" x2="17" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
   </svg>
 
   <!-- =============================================
-       COMPACT HEADER (NO GITHUB LINK)
+       HEADER
        ============================================= -->
   <header class="nav">
     <div class="nav-container">
@@ -109,10 +152,20 @@
         <span class="brand-mark">muid<span class="brand-accent">.spec</span></span>
       </a>
 
+      <!-- Desktop Navigation Center -->
       <nav class="nav-center" aria-label="Navigation">
-        <a href="/credentials" class="nav-link active" data-route="/credentials" data-i18n="nav.credentials">Credentials</a>
-        <a href="/spec" class="nav-link" data-route="/spec" data-i18n="nav.spec">Specification</a>
-        <a href="/examples" class="nav-link" data-route="/examples" data-i18n="nav.code">Examples</a>
+        <a href="/credentials" class="nav-link active" data-route="/credentials">
+          <svg class="icon nav-item-icon" aria-hidden="true"><use href="#nav-credentials"></use></svg>
+          <span data-i18n="nav.credentials">Credentials</span>
+        </a>
+        <a href="/spec" class="nav-link" data-route="/spec">
+          <svg class="icon nav-item-icon" aria-hidden="true"><use href="#nav-spec"></use></svg>
+          <span data-i18n="nav.spec">Specification</span>
+        </a>
+        <a href="/examples" class="nav-link" data-route="/examples">
+          <svg class="icon nav-item-icon" aria-hidden="true"><use href="#nav-examples"></use></svg>
+          <span data-i18n="nav.code">Examples</span>
+        </a>
       </nav>
 
       <div class="nav-right">
@@ -128,7 +181,7 @@
                 <use href="#flag-us"></use>
               </svg>
             </span>
-            <svg class="icon" viewBox="0 0 24 24" style="width: 0.9rem; height: 0.9rem;" aria-hidden="true">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true">
               <use href="#chevron-down"></use>
             </svg>
           </button>
@@ -138,21 +191,21 @@
               <span class="form-hint" data-i18n="pref.theme">Theme</span>
               <div class="theme-grid">
                 <button type="button" class="theme-btn" data-theme-val="light">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#sun"></use></svg>
+                  <svg class="icon icon-base" viewBox="0 0 24 24"><use href="#sun"></use></svg>
                   <span>Light</span>
                 </button>
                 <button type="button" class="theme-btn active" data-theme-val="dark">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#moon"></use></svg>
+                  <svg class="icon icon-base" viewBox="0 0 24 24"><use href="#moon"></use></svg>
                   <span>Dark</span>
                 </button>
                 <button type="button" class="theme-btn" data-theme-val="black">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#contrast"></use></svg>
+                  <svg class="icon icon-base" viewBox="0 0 24 24"><use href="#contrast"></use></svg>
                   <span>Black</span>
                 </button>
               </div>
             </section>
 
-            <section class="form-group" style="margin-top: 0.5rem;">
+            <section class="form-group mt-sm">
               <span class="form-hint" data-i18n="pref.language">Language</span>
               <div class="lang-grid">
                 <button type="button" class="lang-btn active" data-lang-val="en">
@@ -172,16 +225,14 @@
   </header>
 
   <!-- =============================================
-       HERO & LIVE CREDENTIALS CARD
+       MAIN VIEWS
        ============================================= -->
   <main>
-    <!-- =============================================
-         VIEW 1: LIVE CREDENTIALS (/ or /credentials)
-         ============================================= -->
+    <!-- View 1: Live Credentials (/ or /credentials) -->
     <div class="page-view active" id="view-credentials">
       <div class="container">
         <div class="hero-header">
-          <h1 class="hero-title-compact" data-i18n="hero.title">Mehr Unique ID <span class="highlight">(MUID)</span></h1>
+          <h1 class="hero-title-compact"><span data-i18n="hero.title_lead">Mehr Unique ID</span> <span class="highlight">(MUID)</span></h1>
           <p class="hero-subtitle" data-i18n="hero.subtitle">64-bit BigInt database IDs, Base36 case-insensitive identifiers, and 256-bit Base62 account authentication tokens.</p>
         </div>
 
@@ -189,7 +240,7 @@
         <div class="creds-card">
           <div class="creds-card-head">
             <span class="creds-card-title">
-              <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#zap"></use></svg>
+              <svg class="icon icon-base" viewBox="0 0 24 24"><use href="#zap"></use></svg>
               <span>Live Account Credentials</span>
             </span>
 
@@ -207,8 +258,9 @@
               </div>
               <div class="creds-val-wrap">
                 <span class="creds-val accent" id="cred-account-id">6gq46u</span>
-                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-account-id').textContent, this)" title="Copy ID">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
+                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-account-id'), this)" title="Copy ID">
+                  <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                  <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
                 </button>
               </div>
             </div>
@@ -220,8 +272,9 @@
               </div>
               <div class="creds-val-wrap">
                 <span class="creds-val" id="cred-raw-id">13954201234</span>
-                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-raw-id').textContent, this)" title="Copy Raw ID">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
+                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-raw-id'), this)" title="Copy Raw ID">
+                  <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                  <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
                 </button>
               </div>
             </div>
@@ -233,8 +286,9 @@
               </div>
               <div class="creds-val-wrap">
                 <span class="creds-val secret" id="cred-secret">1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ</span>
-                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-secret').textContent, this)" title="Copy Secret">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
+                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-secret'), this)" title="Copy Secret">
+                  <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                  <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
                 </button>
               </div>
             </div>
@@ -245,9 +299,10 @@
                 <span class="creds-label" data-i18n="label.token">Account Token (ID : Secret)</span>
               </div>
               <div class="creds-val-wrap">
-                <span class="creds-val" id="cred-token" style="color: var(--text-primary);">6gq46u:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ</span>
-                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-token').textContent, this)" title="Copy Token">
-                  <svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#copy"></use></svg>
+                <span class="creds-val token-val" id="cred-token">6gq46u:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ</span>
+                <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('cred-token'), this)" title="Copy Token">
+                  <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                  <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
                 </button>
               </div>
             </div>
@@ -271,9 +326,7 @@
       </div>
     </div>
 
-    <!-- =============================================
-         VIEW 2: SPECIFICATION (/spec)
-         ============================================= -->
+    <!-- View 2: Specification (/spec) -->
     <div class="page-view" id="view-spec">
       <div class="container">
         <div class="hero-header">
@@ -285,10 +338,10 @@
           <!-- Card 1: ID Math & Epoch -->
           <div class="spec-card">
             <h3>
-              <svg class="icon" viewBox="0 0 24 24" style="color:var(--accent);"><use href="#hash"></use></svg>
-              <span>1. Epoch & Numeric ID</span>
+              <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#hash"></use></svg>
+              <span data-i18n="spec.epoch_title">1. Epoch &amp; Numeric ID</span>
             </h3>
-            <p>Generated sequentially from the fixed Tehran epoch with 4 random digits:</p>
+            <p data-i18n="spec.epoch_desc">Generated sequentially from the fixed Tehran epoch with 4 random digits:</p>
             <ul>
               <li><strong>Epoch:</strong> <code>2026-09-22 00:00:00 (UTC+3:30)</code> = <code>1790022600</code> sec</li>
               <li><strong>Formula:</strong> <code>RawBigInt = (ElapsedSec * 10000) + Random(0..9999)</code></li>
@@ -300,8 +353,8 @@
           <!-- Card 2: Secret & Token Regex -->
           <div class="spec-card">
             <h3>
-              <svg class="icon" viewBox="0 0 24 24" style="color:var(--success);"><use href="#lock"></use></svg>
-              <span data-i18n="spec.secret_title">2. Secret & API Regex</span>
+              <svg class="icon icon-success" viewBox="0 0 24 24"><use href="#lock"></use></svg>
+              <span data-i18n="spec.secret_title">2. Secret &amp; API Regex</span>
             </h3>
             <p data-i18n="spec.secret_desc">256-bit security hash and standardized authorization token regex:</p>
             <ul>
@@ -310,7 +363,11 @@
             </ul>
             <div class="code-box-mini">
               <span>^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$</span>
-              <button type="button" class="copy-btn" onclick="copySnippet('^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', this)">Copy</button>
+              <button type="button" class="copy-btn" onclick="copySnippet('^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', this)">
+                <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+                <span>Copy</span>
+              </button>
             </div>
           </div>
 
@@ -318,17 +375,19 @@
           <div class="spec-card full-width">
             <div class="spec-card-head">
               <h3>
-                <svg class="icon" viewBox="0 0 24 24" style="color:var(--accent);"><use href="#zap"></use></svg>
+                <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#zap"></use></svg>
                 <span data-i18n="spec.decision_title">The Genesis Epoch Decision (Why 2026-09-22?)</span>
               </h3>
               <span class="badge" data-i18n="spec.decision_badge">Day 0 Offset</span>
             </div>
-            <p data-i18n="spec.decision_desc">The first day of Mehr being released was <strong>2026-09-23</strong> (which corresponds to <strong>2585-07-01</strong>, or 1 Mehr 2585). MUID starts exactly one day before the release date to anchor the timeline cleanly at <strong>Day 0</strong> (which then becomes <strong>2585-06-31</strong> or <strong>2026-09-22</strong>):</p>
+            <!-- Dual English/Persian templates toggled purely by CSS -->
+            <p data-lang="en">The first day of Mehr being released was <strong>2026-09-23</strong> (which corresponds to <strong>2585-07-01</strong>, or 1 Mehr 2585). MUID starts exactly one day before the release date to anchor the timeline cleanly at <strong>Day 0</strong> (which then becomes <strong>2585-06-31</strong> or <strong>2026-09-22</strong>):</p>
+            <p data-lang="fa">نخستین روز انتشار رسمی مهر، تاریخ <strong>۲۰۲۶-۰۹-۲۳</strong> برابر با <strong>۲۵۸۵-۰۷-۰۱</strong> (۱ مهر ۲۵۸۵) است. مبدا زمانی MUID دقیقا یک روز قبل آغاز می‌شود تا چرخه شناسه‌ها از <strong>روز صفر</strong> (برابر با <strong>۲۵۸۵-۰۶-۳۱</strong> یا <strong>۲۰۲۶-۰۹-۲۲</strong>) پایه‌گذاری شود:</p>
             <div class="decision-grid">
               <div class="decision-step">
                 <div class="step-label" data-i18n="spec.step0_label">Day 0 · Genesis Epoch</div>
                 <div class="step-date">2026-09-22 <span class="dim">· 2585-06-31 (31 Shahrivar)</span></div>
-                <p class="step-desc" data-i18n="spec.step0_desc">The timeline begins at <code>00:00:00 (UTC+3:30)</code> (Unix timestamp <code>1790022600</code>). Genesis state, system bootstrapping, and initial node migrations execute cleanly within this 0-indexed day without producing negative offsets.</p>
+                <p class="step-desc" data-i18n="spec.step0_desc">The timeline begins at 00:00:00 (UTC+3:30) (Unix timestamp 1790022600). Genesis state, system bootstrapping, and initial node migrations execute cleanly within this 0-indexed day without producing negative offsets.</p>
               </div>
               <div class="decision-step">
                 <div class="step-label" data-i18n="spec.step1_label">Day 1 · Official Release</div>
@@ -341,46 +400,70 @@
       </div>
     </div>
 
-    <!-- =============================================
-         VIEW 3: IMPLEMENTATION EXAMPLES (/examples)
-         ============================================= -->
+    <!-- View 3: Implementation Examples (/examples) -->
     <div class="page-view" id="view-examples">
       <div class="container">
         <div class="hero-header">
           <h1 class="hero-title-compact" data-i18n="nav.code">Implementation Examples</h1>
-          <p class="hero-subtitle" data-i18n="examples.subtitle">Self-contained production implementations in Go, JavaScript, TypeScript, Python, PHP, and Bash.</p>
+          <p class="hero-subtitle" data-i18n="examples.subtitle">Self-contained production implementations in Go, JavaScript, TypeScript, Python, PHP, and POSIX Shell.</p>
         </div>
 
+        <!-- Language Tabs with Minimal SVG Icons -->
         <div class="lang-bar-compact" role="tablist">
-          <button type="button" class="lang-btn-sm active" data-lang-panel="code-go">Go</button>
-          <button type="button" class="lang-btn-sm" data-lang-panel="code-js">JavaScript</button>
-          <button type="button" class="lang-btn-sm" data-lang-panel="code-ts">TypeScript</button>
-          <button type="button" class="lang-btn-sm" data-lang-panel="code-py">Python</button>
-          <button type="button" class="lang-btn-sm" data-lang-panel="code-php">PHP</button>
-          <button type="button" class="lang-btn-sm" data-lang-panel="code-bash">Bash</button>
+          <button type="button" class="lang-btn-sm active" data-lang-panel="code-go">
+            <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-go"></use></svg>
+            <span>Go</span>
+          </button>
+          <button type="button" class="lang-btn-sm" data-lang-panel="code-js">
+            <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-js"></use></svg>
+            <span>JavaScript</span>
+          </button>
+          <button type="button" class="lang-btn-sm" data-lang-panel="code-ts">
+            <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-ts"></use></svg>
+            <span>TypeScript</span>
+          </button>
+          <button type="button" class="lang-btn-sm" data-lang-panel="code-py">
+            <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-py"></use></svg>
+            <span>Python</span>
+          </button>
+          <button type="button" class="lang-btn-sm" data-lang-panel="code-php">
+            <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-php"></use></svg>
+            <span>PHP</span>
+          </button>
+          <button type="button" class="lang-btn-sm" data-lang-panel="code-sh">
+            <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-sh"></use></svg>
+            <span>POSIX Shell</span>
+          </button>
         </div>
 
         <!-- Go -->
         <div class="code-panel-sm active" id="code-go">
           <div class="code-head-sm">
-            <span>muid.go</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-go'), this)">Copy Code</button>
+            <span class="code-file-label">
+              <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-go"></use></svg>
+              <span>muid.go</span>
+            </span>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-go'), this)">
+              <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+              <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+              <span>Copy Code</span>
+            </button>
           </div>
-          <pre class="code-pre-sm"><code id="src-go">package muid
+          <pre class="code-pre-sm"><code id="src-go" data-raw="package muid
 
 import (
-	"crypto/rand"
-	"fmt"
-	"math/big"
-	"regexp"
-	"strconv"
-	"strings"
-	"time"
+	&quot;crypto/rand&quot;
+	&quot;fmt&quot;
+	&quot;math/big&quot;
+	&quot;regexp&quot;
+	&quot;strconv&quot;
+	&quot;strings&quot;
+	&quot;time&quot;
 )
 
 const (
-	EpochTimestamp = 1790022600 // 2026-09-22 00:00:00 UTC+3:30
-	Base62Chars    = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	EpochTimestamp = 1790022600 // 2026-09-22 00:00:00 UTC+3:30 (Day 0)
+	Base62Chars    = &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;
 )
 
 var APITokenRegex = regexp.MustCompile(`^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$`)
@@ -389,7 +472,7 @@ func Generate() (raw int64, b36 string, err error) {
 	elapsed := time.Now().Unix() - EpochTimestamp
 	rBig, err := rand.Int(rand.Reader, big.NewInt(10000))
 	if err != nil {
-		return 0, "", err
+		return 0, &quot;&quot;, err
 	}
 	raw = elapsed*10000 + rBig.Int64()
 	return raw, strconv.FormatInt(raw, 36), nil
@@ -406,37 +489,43 @@ func Parse(b36 string) (raw int64, createdAt time.Time, randomSuffix int, err er
 func GenerateSecret() (string, error) {
 	b := make([]byte, 32)
 	if _, err := rand.Read(b); err != nil {
-		return "", err
+		return &quot;&quot;, err
 	}
 	n := new(big.Int).SetBytes(b)
 	base := big.NewInt(62)
 	rem := new(big.Int)
 	var sb strings.Builder
-	for n.Sign() > 0 {
+	for n.Sign() &gt; 0 {
 		n.DivMod(n, base, rem)
 		sb.WriteByte(Base62Chars[rem.Int64()])
 	}
 	runes := []rune(sb.String())
-	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+	for i, j := 0, len(runes)-1; i &lt; j; i, j = i+1, j-1 {
 		runes[i], runes[j] = runes[j], runes[i]
 	}
 	res := string(runes)
-	for len(res) < 43 {
-		res = "0" + res
+	for len(res) &lt; 43 {
+		res = &quot;0&quot; + res
 	}
 	return res, nil
-}
-</code></pre>
+}"><span class="code-line"><span class="line-num">1</span><span class="line-content"><span class="tok-keyword">package</span> muid</span></span><span class="code-line"><span class="line-num">2</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">3</span><span class="line-content"><span class="tok-keyword">import</span> (</span></span><span class="code-line"><span class="line-num">4</span><span class="line-content">	<span class="tok-string">&quot;crypto/rand&quot;</span></span></span><span class="code-line"><span class="line-num">5</span><span class="line-content">	<span class="tok-string">&quot;fmt&quot;</span></span></span><span class="code-line"><span class="line-num">6</span><span class="line-content">	<span class="tok-string">&quot;math/big&quot;</span></span></span><span class="code-line"><span class="line-num">7</span><span class="line-content">	<span class="tok-string">&quot;regexp&quot;</span></span></span><span class="code-line"><span class="line-num">8</span><span class="line-content">	<span class="tok-string">&quot;strconv&quot;</span></span></span><span class="code-line"><span class="line-num">9</span><span class="line-content">	<span class="tok-string">&quot;strings&quot;</span></span></span><span class="code-line"><span class="line-num">10</span><span class="line-content">	<span class="tok-string">&quot;time&quot;</span></span></span><span class="code-line"><span class="line-num">11</span><span class="line-content">)</span></span><span class="code-line"><span class="line-num">12</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">13</span><span class="line-content"><span class="tok-keyword">const</span> (</span></span><span class="code-line"><span class="line-num">14</span><span class="line-content">	EpochTimestamp = <span class="tok-number">1790022600</span> <span class="tok-comment">// 2026-09-22 00:00:00 UTC+3:30 (Day 0)</span></span></span><span class="code-line"><span class="line-num">15</span><span class="line-content">	Base62Chars    = <span class="tok-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span></span></span><span class="code-line"><span class="line-num">16</span><span class="line-content">)</span></span><span class="code-line"><span class="line-num">17</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">18</span><span class="line-content"><span class="tok-keyword">var</span> APITokenRegex = regexp.MustCompile(<span class="tok-string">`^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$`</span>)</span></span><span class="code-line"><span class="line-num">19</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">20</span><span class="line-content"><span class="tok-keyword">func</span> Generate() (raw <span class="tok-type">int64</span>, b36 <span class="tok-type">string</span>, err <span class="tok-type">error</span>) {</span></span><span class="code-line"><span class="line-num">21</span><span class="line-content">	elapsed := time.Now().Unix() - EpochTimestamp</span></span><span class="code-line"><span class="line-num">22</span><span class="line-content">	rBig, err := rand.Int(rand.Reader, big.NewInt(<span class="tok-number">10000</span>))</span></span><span class="code-line"><span class="line-num">23</span><span class="line-content">	<span class="tok-keyword">if</span> err != <span class="tok-type">nil</span> {</span></span><span class="code-line"><span class="line-num">24</span><span class="line-content">		<span class="tok-keyword">return</span> <span class="tok-number">0</span>, <span class="tok-string">&quot;&quot;</span>, err</span></span><span class="code-line"><span class="line-num">25</span><span class="line-content">	}</span></span><span class="code-line"><span class="line-num">26</span><span class="line-content">	raw = elapsed*<span class="tok-number">10000</span> + rBig.Int64()</span></span><span class="code-line"><span class="line-num">27</span><span class="line-content">	<span class="tok-keyword">return</span> raw, strconv.FormatInt(raw, <span class="tok-number">36</span>), <span class="tok-type">nil</span></span></span><span class="code-line"><span class="line-num">28</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">29</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">30</span><span class="line-content"><span class="tok-keyword">func</span> Parse(b36 <span class="tok-type">string</span>) (raw <span class="tok-type">int64</span>, createdAt time.<span class="tok-type">Time</span>, randomSuffix <span class="tok-type">int</span>, err <span class="tok-type">error</span>) {</span></span><span class="code-line"><span class="line-num">31</span><span class="line-content">	raw, err = strconv.ParseInt(strings.ToLower(strings.TrimSpace(b36)), <span class="tok-number">36</span>, <span class="tok-number">64</span>)</span></span><span class="code-line"><span class="line-num">32</span><span class="line-content">	<span class="tok-keyword">if</span> err != <span class="tok-type">nil</span> {</span></span><span class="code-line"><span class="line-num">33</span><span class="line-content">		<span class="tok-keyword">return</span> <span class="tok-number">0</span>, time.<span class="tok-type">Time</span>{}, <span class="tok-number">0</span>, err</span></span><span class="code-line"><span class="line-num">34</span><span class="line-content">	}</span></span><span class="code-line"><span class="line-num">35</span><span class="line-content">	<span class="tok-keyword">return</span> raw, time.Unix(EpochTimestamp+(raw/<span class="tok-number">10000</span>), <span class="tok-number">0</span>).UTC(), <span class="tok-type">int</span>(raw % <span class="tok-number">10000</span>), <span class="tok-type">nil</span></span></span><span class="code-line"><span class="line-num">36</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">37</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">38</span><span class="line-content"><span class="tok-keyword">func</span> GenerateSecret() (<span class="tok-type">string</span>, <span class="tok-type">error</span>) {</span></span><span class="code-line"><span class="line-num">39</span><span class="line-content">	b := <span class="tok-keyword">make</span>([]<span class="tok-type">byte</span>, <span class="tok-number">32</span>)</span></span><span class="code-line"><span class="line-num">40</span><span class="line-content">	<span class="tok-keyword">if</span> _, err := rand.Read(b); err != <span class="tok-type">nil</span> {</span></span><span class="code-line"><span class="line-num">41</span><span class="line-content">		<span class="tok-keyword">return</span> <span class="tok-string">&quot;&quot;</span>, err</span></span><span class="code-line"><span class="line-num">42</span><span class="line-content">	}</span></span><span class="code-line"><span class="line-num">43</span><span class="line-content">	n := <span class="tok-keyword">new</span>(big.Int).SetBytes(b)</span></span><span class="code-line"><span class="line-num">44</span><span class="line-content">	base := big.NewInt(<span class="tok-number">62</span>)</span></span><span class="code-line"><span class="line-num">45</span><span class="line-content">	rem := <span class="tok-keyword">new</span>(big.Int)</span></span><span class="code-line"><span class="line-num">46</span><span class="line-content">	<span class="tok-keyword">var</span> sb strings.Builder</span></span><span class="code-line"><span class="line-num">47</span><span class="line-content">	<span class="tok-keyword">for</span> n.Sign() &gt; <span class="tok-number">0</span> {</span></span><span class="code-line"><span class="line-num">48</span><span class="line-content">		n.DivMod(n, base, rem)</span></span><span class="code-line"><span class="line-num">49</span><span class="line-content">		sb.WriteByte(Base62Chars[rem.Int64()])</span></span><span class="code-line"><span class="line-num">50</span><span class="line-content">	}</span></span><span class="code-line"><span class="line-num">51</span><span class="line-content">	runes := []<span class="tok-type">rune</span>(sb.String())</span></span><span class="code-line"><span class="line-num">52</span><span class="line-content">	<span class="tok-keyword">for</span> i, j := <span class="tok-number">0</span>, len(runes)-<span class="tok-number">1</span>; i &lt; j; i, j = i+<span class="tok-number">1</span>, j-<span class="tok-number">1</span> {</span></span><span class="code-line"><span class="line-num">53</span><span class="line-content">		runes[i], runes[j] = runes[j], runes[i]</span></span><span class="code-line"><span class="line-num">54</span><span class="line-content">	}</span></span><span class="code-line"><span class="line-num">55</span><span class="line-content">	res := <span class="tok-type">string</span>(runes)</span></span><span class="code-line"><span class="line-num">56</span><span class="line-content">	<span class="tok-keyword">for</span> len(res) &lt; <span class="tok-number">43</span> {</span></span><span class="code-line"><span class="line-num">57</span><span class="line-content">		res = <span class="tok-string">&quot;0&quot;</span> + res</span></span><span class="code-line"><span class="line-num">58</span><span class="line-content">	}</span></span><span class="code-line"><span class="line-num">59</span><span class="line-content">	<span class="tok-keyword">return</span> res, <span class="tok-type">nil</span></span></span><span class="code-line"><span class="line-num">60</span><span class="line-content">}</span></span></code></pre>
         </div>
 
         <!-- JS -->
         <div class="code-panel-sm" id="code-js">
           <div class="code-head-sm">
-            <span>muid.js</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-js'), this)">Copy Code</button>
+            <span class="code-file-label">
+              <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-js"></use></svg>
+              <span>muid.js</span>
+            </span>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-js'), this)">
+              <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+              <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+              <span>Copy Code</span>
+            </button>
           </div>
-          <pre class="code-pre-sm"><code id="src-js">const EPOCH = 1790022600n; // 2026-09-22 00:00:00 UTC+3:30
-const B62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+          <pre class="code-pre-sm"><code id="src-js" data-raw="const EPOCH = 1790022600n; // 2026-09-22 00:00:00 UTC+3:30 (Day 0)
+const B62 = &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
 export const API_TOKEN_REGEX = /^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/;
 
 export function generateMuid() {
@@ -451,7 +540,7 @@ export function parseMuid(b36) {
   let raw = 0n;
   for (const ch of clean) {
     const code = ch.charCodeAt(0);
-    raw = raw * 36n + BigInt(code >= 48 && code <= 57 ? code - 48 : code - 87);
+    raw = raw * 36n + BigInt(code &gt;= 48 &amp;&amp; code &lt;= 57 ? code - 48 : code - 87);
   }
   return { raw, base36: raw.toString(36), elapsed: raw / 10000n, rand: Number(raw % 10000n) };
 }
@@ -459,26 +548,32 @@ export function parseMuid(b36) {
 export function generateSecret() {
   const bytes = crypto.getRandomValues(new Uint8Array(32));
   let num = 0n;
-  for (const b of bytes) num = (num << 8n) | BigInt(b);
-  let res = '';
-  while (num > 0n) {
+  for (const b of bytes) num = (num &lt;&lt; 8n) | BigInt(b);
+  let res = &quot;&quot;;
+  while (num &gt; 0n) {
     res = B62[Number(num % 62n)] + res;
     num /= 62n;
   }
-  return res.padStart(43, '0');
-}
-</code></pre>
+  return res.padStart(43, &quot;0&quot;);
+}"><span class="code-line"><span class="line-num">1</span><span class="line-content"><span class="tok-keyword">const</span> EPOCH = <span class="tok-number">1790022600n</span>; <span class="tok-comment">// 2026-09-22 00:00:00 UTC+3:30 (Day 0)</span></span></span><span class="code-line"><span class="line-num">2</span><span class="line-content"><span class="tok-keyword">const</span> B62 = <span class="tok-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span>;</span></span><span class="code-line"><span class="line-num">3</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">const</span> API_TOKEN_REGEX = /^[<span class="tok-number">0</span>-9a-z]{<span class="tok-number">6</span>,<span class="tok-number">12</span>}:[<span class="tok-number">0</span>-9a-zA-Z]{<span class="tok-number">43</span>}$/;</span></span><span class="code-line"><span class="line-num">4</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">5</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">function</span> generateMuid() {</span></span><span class="code-line"><span class="line-num">6</span><span class="line-content">  <span class="tok-keyword">const</span> elapsed = <span class="tok-type">BigInt</span>(<span class="tok-type">Math</span>.floor(<span class="tok-type">Date</span>.now() / <span class="tok-number">1000</span>)) - EPOCH;</span></span><span class="code-line"><span class="line-num">7</span><span class="line-content">  <span class="tok-keyword">const</span> rand = <span class="tok-type">BigInt</span>(<span class="tok-type">crypto</span>.getRandomValues(<span class="tok-keyword">new</span> <span class="tok-type">Uint32Array</span>(<span class="tok-number">1</span>))[<span class="tok-number">0</span>] % <span class="tok-number">10000</span>);</span></span><span class="code-line"><span class="line-num">8</span><span class="line-content">  <span class="tok-keyword">const</span> raw = elapsed * <span class="tok-number">10000n</span> + rand;</span></span><span class="code-line"><span class="line-num">9</span><span class="line-content">  <span class="tok-keyword">return</span> { raw, base36: raw.toString(<span class="tok-number">36</span>) };</span></span><span class="code-line"><span class="line-num">10</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">11</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">12</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">function</span> parseMuid(b36) {</span></span><span class="code-line"><span class="line-num">13</span><span class="line-content">  <span class="tok-keyword">const</span> clean = String(b36).trim().toLowerCase();</span></span><span class="code-line"><span class="line-num">14</span><span class="line-content">  <span class="tok-keyword">let</span> raw = <span class="tok-number">0n</span>;</span></span><span class="code-line"><span class="line-num">15</span><span class="line-content">  <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> ch <span class="tok-keyword">of</span> clean) {</span></span><span class="code-line"><span class="line-num">16</span><span class="line-content">    <span class="tok-keyword">const</span> code = ch.charCodeAt(<span class="tok-number">0</span>);</span></span><span class="code-line"><span class="line-num">17</span><span class="line-content">    raw = raw * <span class="tok-number">36n</span> + <span class="tok-type">BigInt</span>(code &gt;= <span class="tok-number">48</span> &amp;&amp; code &lt;= <span class="tok-number">57</span> ? code - <span class="tok-number">48</span> : code - <span class="tok-number">87</span>);</span></span><span class="code-line"><span class="line-num">18</span><span class="line-content">  }</span></span><span class="code-line"><span class="line-num">19</span><span class="line-content">  <span class="tok-keyword">return</span> { raw, base36: raw.toString(<span class="tok-number">36</span>), elapsed: raw / <span class="tok-number">10000n</span>, rand: Number(raw % <span class="tok-number">10000n</span>) };</span></span><span class="code-line"><span class="line-num">20</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">21</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">22</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">function</span> generateSecret() {</span></span><span class="code-line"><span class="line-num">23</span><span class="line-content">  <span class="tok-keyword">const</span> bytes = <span class="tok-type">crypto</span>.getRandomValues(<span class="tok-keyword">new</span> <span class="tok-type">Uint8Array</span>(<span class="tok-number">32</span>));</span></span><span class="code-line"><span class="line-num">24</span><span class="line-content">  <span class="tok-keyword">let</span> num = <span class="tok-number">0n</span>;</span></span><span class="code-line"><span class="line-num">25</span><span class="line-content">  <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> b <span class="tok-keyword">of</span> bytes) num = (num &lt;&lt; <span class="tok-number">8n</span>) | <span class="tok-type">BigInt</span>(b);</span></span><span class="code-line"><span class="line-num">26</span><span class="line-content">  <span class="tok-keyword">let</span> res = <span class="tok-string">&quot;&quot;</span>;</span></span><span class="code-line"><span class="line-num">27</span><span class="line-content">  <span class="tok-keyword">while</span> (num &gt; <span class="tok-number">0n</span>) {</span></span><span class="code-line"><span class="line-num">28</span><span class="line-content">    res = B62[Number(num % <span class="tok-number">62n</span>)] + res;</span></span><span class="code-line"><span class="line-num">29</span><span class="line-content">    num /= <span class="tok-number">62n</span>;</span></span><span class="code-line"><span class="line-num">30</span><span class="line-content">  }</span></span><span class="code-line"><span class="line-num">31</span><span class="line-content">  <span class="tok-keyword">return</span> res.padStart(<span class="tok-number">43</span>, <span class="tok-string">&quot;0&quot;</span>);</span></span><span class="code-line"><span class="line-num">32</span><span class="line-content">}</span></span></code></pre>
         </div>
 
         <!-- TS -->
         <div class="code-panel-sm" id="code-ts">
           <div class="code-head-sm">
-            <span>muid.ts</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-ts'), this)">Copy Code</button>
+            <span class="code-file-label">
+              <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-ts"></use></svg>
+              <span>muid.ts</span>
+            </span>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-ts'), this)">
+              <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+              <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+              <span>Copy Code</span>
+            </button>
           </div>
-          <pre class="code-pre-sm"><code id="src-ts">export const EPOCH: bigint = 1790022600n;
+          <pre class="code-pre-sm"><code id="src-ts" data-raw="export const EPOCH: bigint = 1790022600n; // 2026-09-22 (Day 0)
 export const API_TOKEN_REGEX = /^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/;
-const B62 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+const B62 = &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
 
 export function generateMuid(): { raw: bigint; base36: string } {
   const elapsed = BigInt(Math.floor(Date.now() / 1000)) - EPOCH;
@@ -492,7 +587,7 @@ export function parseMuid(b36: string): { raw: bigint; base36: string; elapsed: 
   let raw = 0n;
   for (const ch of clean) {
     const c = ch.charCodeAt(0);
-    raw = raw * 36n + BigInt(c >= 48 && c <= 57 ? c - 48 : c - 87);
+    raw = raw * 36n + BigInt(c &gt;= 48 &amp;&amp; c &lt;= 57 ? c - 48 : c - 87);
   }
   return { raw, base36: raw.toString(36), elapsed: raw / 10000n, rand: Number(raw % 10000n) };
 }
@@ -500,83 +595,95 @@ export function parseMuid(b36: string): { raw: bigint; base36: string; elapsed: 
 export function generateSecret(): string {
   const bytes = crypto.getRandomValues(new Uint8Array(32));
   let num = 0n;
-  for (const b of bytes) num = (num << 8n) | BigInt(b);
-  let res = '';
-  while (num > 0n) {
+  for (const b of bytes) num = (num &lt;&lt; 8n) | BigInt(b);
+  let res = &quot;&quot;;
+  while (num &gt; 0n) {
     res = B62[Number(num % 62n)] + res;
     num /= 62n;
   }
-  return res.padStart(43, '0');
-}
-</code></pre>
+  return res.padStart(43, &quot;0&quot;);
+}"><span class="code-line"><span class="line-num">1</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">const</span> EPOCH: <span class="tok-type">bigint</span> = <span class="tok-number">1790022600n</span>; <span class="tok-comment">// 2026-09-22 (Day 0)</span></span></span><span class="code-line"><span class="line-num">2</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">const</span> API_TOKEN_REGEX = /^[<span class="tok-number">0</span>-9a-z]{<span class="tok-number">6</span>,<span class="tok-number">12</span>}:[<span class="tok-number">0</span>-9a-zA-Z]{<span class="tok-number">43</span>}$/;</span></span><span class="code-line"><span class="line-num">3</span><span class="line-content"><span class="tok-keyword">const</span> B62 = <span class="tok-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span>;</span></span><span class="code-line"><span class="line-num">4</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">5</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">function</span> generateMuid(): { raw: <span class="tok-type">bigint</span>; base36: <span class="tok-type">string</span> } {</span></span><span class="code-line"><span class="line-num">6</span><span class="line-content">  <span class="tok-keyword">const</span> elapsed = <span class="tok-type">BigInt</span>(<span class="tok-type">Math</span>.floor(<span class="tok-type">Date</span>.now() / <span class="tok-number">1000</span>)) - EPOCH;</span></span><span class="code-line"><span class="line-num">7</span><span class="line-content">  <span class="tok-keyword">const</span> rand = <span class="tok-type">BigInt</span>(<span class="tok-type">crypto</span>.getRandomValues(<span class="tok-keyword">new</span> <span class="tok-type">Uint32Array</span>(<span class="tok-number">1</span>))[<span class="tok-number">0</span>] % <span class="tok-number">10000</span>);</span></span><span class="code-line"><span class="line-num">8</span><span class="line-content">  <span class="tok-keyword">const</span> raw = elapsed * <span class="tok-number">10000n</span> + rand;</span></span><span class="code-line"><span class="line-num">9</span><span class="line-content">  <span class="tok-keyword">return</span> { raw, base36: raw.toString(<span class="tok-number">36</span>) };</span></span><span class="code-line"><span class="line-num">10</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">11</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">12</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">function</span> parseMuid(b36: <span class="tok-type">string</span>): { raw: <span class="tok-type">bigint</span>; base36: <span class="tok-type">string</span>; elapsed: <span class="tok-type">bigint</span>; rand: number } {</span></span><span class="code-line"><span class="line-num">13</span><span class="line-content">  <span class="tok-keyword">const</span> clean = b36.trim().toLowerCase();</span></span><span class="code-line"><span class="line-num">14</span><span class="line-content">  <span class="tok-keyword">let</span> raw = <span class="tok-number">0n</span>;</span></span><span class="code-line"><span class="line-num">15</span><span class="line-content">  <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> ch <span class="tok-keyword">of</span> clean) {</span></span><span class="code-line"><span class="line-num">16</span><span class="line-content">    <span class="tok-keyword">const</span> c = ch.charCodeAt(<span class="tok-number">0</span>);</span></span><span class="code-line"><span class="line-num">17</span><span class="line-content">    raw = raw * <span class="tok-number">36n</span> + <span class="tok-type">BigInt</span>(c &gt;= <span class="tok-number">48</span> &amp;&amp; c &lt;= <span class="tok-number">57</span> ? c - <span class="tok-number">48</span> : c - <span class="tok-number">87</span>);</span></span><span class="code-line"><span class="line-num">18</span><span class="line-content">  }</span></span><span class="code-line"><span class="line-num">19</span><span class="line-content">  <span class="tok-keyword">return</span> { raw, base36: raw.toString(<span class="tok-number">36</span>), elapsed: raw / <span class="tok-number">10000n</span>, rand: Number(raw % <span class="tok-number">10000n</span>) };</span></span><span class="code-line"><span class="line-num">20</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">21</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">22</span><span class="line-content"><span class="tok-keyword">export</span> <span class="tok-keyword">function</span> generateSecret(): <span class="tok-type">string</span> {</span></span><span class="code-line"><span class="line-num">23</span><span class="line-content">  <span class="tok-keyword">const</span> bytes = <span class="tok-type">crypto</span>.getRandomValues(<span class="tok-keyword">new</span> <span class="tok-type">Uint8Array</span>(<span class="tok-number">32</span>));</span></span><span class="code-line"><span class="line-num">24</span><span class="line-content">  <span class="tok-keyword">let</span> num = <span class="tok-number">0n</span>;</span></span><span class="code-line"><span class="line-num">25</span><span class="line-content">  <span class="tok-keyword">for</span> (<span class="tok-keyword">const</span> b <span class="tok-keyword">of</span> bytes) num = (num &lt;&lt; <span class="tok-number">8n</span>) | <span class="tok-type">BigInt</span>(b);</span></span><span class="code-line"><span class="line-num">26</span><span class="line-content">  <span class="tok-keyword">let</span> res = <span class="tok-string">&quot;&quot;</span>;</span></span><span class="code-line"><span class="line-num">27</span><span class="line-content">  <span class="tok-keyword">while</span> (num &gt; <span class="tok-number">0n</span>) {</span></span><span class="code-line"><span class="line-num">28</span><span class="line-content">    res = B62[Number(num % <span class="tok-number">62n</span>)] + res;</span></span><span class="code-line"><span class="line-num">29</span><span class="line-content">    num /= <span class="tok-number">62n</span>;</span></span><span class="code-line"><span class="line-num">30</span><span class="line-content">  }</span></span><span class="code-line"><span class="line-num">31</span><span class="line-content">  <span class="tok-keyword">return</span> res.padStart(<span class="tok-number">43</span>, <span class="tok-string">&quot;0&quot;</span>);</span></span><span class="code-line"><span class="line-num">32</span><span class="line-content">}</span></span></code></pre>
         </div>
 
         <!-- Python -->
         <div class="code-panel-sm" id="code-py">
           <div class="code-head-sm">
-            <span>muid.py</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-py'), this)">Copy Code</button>
+            <span class="code-file-label">
+              <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-py"></use></svg>
+              <span>muid.py</span>
+            </span>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-py'), this)">
+              <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+              <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+              <span>Copy Code</span>
+            </button>
           </div>
-          <pre class="code-pre-sm"><code id="src-py">import re, secrets, time
+          <pre class="code-pre-sm"><code id="src-py" data-raw="import re, secrets, time
 
-EPOCH = 1790022600  # 2026-09-22 00:00:00 UTC+3:30
-B36 = "0123456789abcdefghijklmnopqrstuvwxyz"
-B62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-API_TOKEN_REGEX = re.compile(r"^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$")
+EPOCH = 1790022600  # 2026-09-22 00:00:00 UTC+3:30 (Day 0)
+B36 = &quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;
+B62 = &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;
+API_TOKEN_REGEX = re.compile(r&quot;^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$&quot;)
 
-def encode_base36(n: int) -> str:
+def encode_base36(n: int) -&gt; str:
     res = []
-    while n > 0:
+    while n &gt; 0:
         n, r = divmod(n, 36)
         res.append(B36[r])
-    return "".join(reversed(res)) or "0"
+    return &quot;&quot;.join(reversed(res)) or &quot;0&quot;
 
-def generate_muid() -> tuple[int, str]:
+def generate_muid() -&gt; tuple[int, str]:
     elapsed = int(time.time()) - EPOCH
     raw = elapsed * 10000 + secrets.randbelow(10000)
     return raw, encode_base36(raw)
 
-def parse_muid(b36: str) -> dict:
+def parse_muid(b36: str) -&gt; dict:
     raw = int(b36.strip(), 36)
-    return {"raw": raw, "base36": encode_base36(raw), "elapsed": raw // 10000, "rand": raw % 10000}
+    return {&quot;raw&quot;: raw, &quot;base36&quot;: encode_base36(raw), &quot;elapsed&quot;: raw // 10000, &quot;rand&quot;: raw % 10000}
 
-def generate_secret() -> str:
-    n = int.from_bytes(secrets.token_bytes(32), "big")
+def generate_secret() -&gt; str:
+    n = int.from_bytes(secrets.token_bytes(32), &quot;big&quot;)
     res = []
-    while n > 0:
+    while n &gt; 0:
         n, r = divmod(n, 62)
         res.append(B62[r])
-    return "".join(reversed(res)).zfill(43)
-</code></pre>
+    return &quot;&quot;.join(reversed(res)).zfill(43)"><span class="code-line"><span class="line-num">1</span><span class="line-content"><span class="tok-keyword">import</span> re, secrets, time</span></span><span class="code-line"><span class="line-num">2</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">3</span><span class="line-content">EPOCH = <span class="tok-number">1790022600</span>  <span class="tok-comment"># 2026-09-22 00:00:00 UTC+3:30 (Day 0)</span></span></span><span class="code-line"><span class="line-num">4</span><span class="line-content">B36 = <span class="tok-string">&quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;</span></span></span><span class="code-line"><span class="line-num">5</span><span class="line-content">B62 = <span class="tok-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span></span></span><span class="code-line"><span class="line-num">6</span><span class="line-content">API_TOKEN_REGEX = re.compile(r<span class="tok-string">&quot;^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$&quot;</span>)</span></span><span class="code-line"><span class="line-num">7</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">8</span><span class="line-content"><span class="tok-keyword">def</span> encode_base36(n: <span class="tok-type">int</span>) -&gt; str:</span></span><span class="code-line"><span class="line-num">9</span><span class="line-content">    res = []</span></span><span class="code-line"><span class="line-num">10</span><span class="line-content">    <span class="tok-keyword">while</span> n &gt; <span class="tok-number">0</span>:</span></span><span class="code-line"><span class="line-num">11</span><span class="line-content">        n, r = divmod(n, <span class="tok-number">36</span>)</span></span><span class="code-line"><span class="line-num">12</span><span class="line-content">        res.append(B36[r])</span></span><span class="code-line"><span class="line-num">13</span><span class="line-content">    <span class="tok-keyword">return</span> <span class="tok-string">&quot;&quot;</span>.join(reversed(res)) or <span class="tok-string">&quot;0&quot;</span></span></span><span class="code-line"><span class="line-num">14</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">15</span><span class="line-content"><span class="tok-keyword">def</span> generate_muid() -&gt; <span class="tok-type">tuple</span>[<span class="tok-type">int</span>, str]:</span></span><span class="code-line"><span class="line-num">16</span><span class="line-content">    elapsed = <span class="tok-type">int</span>(time.time()) - EPOCH</span></span><span class="code-line"><span class="line-num">17</span><span class="line-content">    raw = elapsed * <span class="tok-number">10000</span> + secrets.randbelow(<span class="tok-number">10000</span>)</span></span><span class="code-line"><span class="line-num">18</span><span class="line-content">    <span class="tok-keyword">return</span> raw, encode_base36(raw)</span></span><span class="code-line"><span class="line-num">19</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">20</span><span class="line-content"><span class="tok-keyword">def</span> parse_muid(b36: str) -&gt; <span class="tok-type">dict</span>:</span></span><span class="code-line"><span class="line-num">21</span><span class="line-content">    raw = <span class="tok-type">int</span>(b36.strip(), <span class="tok-number">36</span>)</span></span><span class="code-line"><span class="line-num">22</span><span class="line-content">    <span class="tok-keyword">return</span> {<span class="tok-string">&quot;raw&quot;</span>: raw, <span class="tok-string">&quot;base36&quot;</span>: encode_base36(raw), <span class="tok-string">&quot;elapsed&quot;</span>: raw <span class="tok-comment">// 10000, &quot;rand&quot;: raw % 10000}</span></span></span><span class="code-line"><span class="line-num">23</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">24</span><span class="line-content"><span class="tok-keyword">def</span> generate_secret() -&gt; str:</span></span><span class="code-line"><span class="line-num">25</span><span class="line-content">    n = <span class="tok-type">int</span>.from_bytes(secrets.token_bytes(<span class="tok-number">32</span>), <span class="tok-string">&quot;big&quot;</span>)</span></span><span class="code-line"><span class="line-num">26</span><span class="line-content">    res = []</span></span><span class="code-line"><span class="line-num">27</span><span class="line-content">    <span class="tok-keyword">while</span> n &gt; <span class="tok-number">0</span>:</span></span><span class="code-line"><span class="line-num">28</span><span class="line-content">        n, r = divmod(n, <span class="tok-number">62</span>)</span></span><span class="code-line"><span class="line-num">29</span><span class="line-content">        res.append(B62[r])</span></span><span class="code-line"><span class="line-num">30</span><span class="line-content">    <span class="tok-keyword">return</span> <span class="tok-string">&quot;&quot;</span>.join(reversed(res)).zfill(<span class="tok-number">43</span>)</span></span></code></pre>
         </div>
 
         <!-- PHP -->
         <div class="code-panel-sm" id="code-php">
           <div class="code-head-sm">
-            <span>muid.php</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-php'), this)">Copy Code</button>
+            <span class="code-file-label">
+              <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-php"></use></svg>
+              <span>muid.php</span>
+            </span>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-php'), this)">
+              <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+              <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+              <span>Copy Code</span>
+            </button>
           </div>
-          <pre class="code-pre-sm"><code id="src-php">&lt;?php
-const EPOCH = 1790022600;
-const B62 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+          <pre class="code-pre-sm"><code id="src-php" data-raw="&lt;?php
+const EPOCH = 1790022600; // 2026-09-22 00:00:00 UTC+3:30 (Day 0)
+const B62 = &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;;
 const API_TOKEN_REGEX = '/^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/';
 
 function generateMuid(): array {
     $raw = (time() - EPOCH) * 10000 + random_int(0, 9999);
-    return ['raw' => $raw, 'base36' => base_convert((string)$raw, 10, 36)];
+    return ['raw' =&gt; $raw, 'base36' =&gt; base_convert((string)$raw, 10, 36)];
 }
 
 function parseMuid(string $b36): array {
     $raw = (int)base_convert(strtolower(trim($b36)), 36, 10);
-    return ['raw' => $raw, 'base36' => strtolower(trim($b36)), 'elapsed' => intdiv($raw, 10000), 'rand' => $raw % 10000];
+    return ['raw' =&gt; $raw, 'base36' =&gt; strtolower(trim($b36)), 'elapsed' =&gt; intdiv($raw, 10000), 'rand' =&gt; $raw % 10000];
 }
 
 function generateSecret(): string {
-    $bytes = array_values(unpack("C*", random_bytes(32)));
-    $res = "";
+    $bytes = array_values(unpack(&quot;C*&quot;, random_bytes(32)));
+    $res = &quot;&quot;;
     while (true) {
         $zero = true; $rem = 0;
-        for ($i = 0; $i < 32; $i++) {
+        for ($i = 0; $i &lt; 32; $i++) {
             $cur = $rem * 256 + $bytes[$i];
             $bytes[$i] = intdiv($cur, 62);
             $rem = $cur % 62;
@@ -586,59 +693,96 @@ function generateSecret(): string {
         if ($zero) break;
     }
     return str_pad($res, 43, '0', STR_PAD_LEFT);
-}
-</code></pre>
+}"><span class="code-line"><span class="line-num">1</span><span class="line-content">&lt;?php</span></span><span class="code-line"><span class="line-num">2</span><span class="line-content"><span class="tok-keyword">const</span> EPOCH = <span class="tok-number">1790022600</span>; <span class="tok-comment">// 2026-09-22 00:00:00 UTC+3:30 (Day 0)</span></span></span><span class="code-line"><span class="line-num">3</span><span class="line-content"><span class="tok-keyword">const</span> B62 = <span class="tok-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span>;</span></span><span class="code-line"><span class="line-num">4</span><span class="line-content"><span class="tok-keyword">const</span> API_TOKEN_REGEX = <span class="tok-string">'/^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/'</span>;</span></span><span class="code-line"><span class="line-num">5</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">6</span><span class="line-content"><span class="tok-keyword">function</span> generateMuid(): <span class="tok-keyword">array</span> {</span></span><span class="code-line"><span class="line-num">7</span><span class="line-content">    $raw = (time() - EPOCH) * <span class="tok-number">10000</span> + random_int(<span class="tok-number">0</span>, <span class="tok-number">9999</span>);</span></span><span class="code-line"><span class="line-num">8</span><span class="line-content">    <span class="tok-keyword">return</span> [<span class="tok-string">'raw'</span> =&gt; $raw, <span class="tok-string">'base36'</span> =&gt; base_convert((<span class="tok-type">string</span>)$raw, <span class="tok-number">10</span>, <span class="tok-number">36</span>)];</span></span><span class="code-line"><span class="line-num">9</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">10</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">11</span><span class="line-content"><span class="tok-keyword">function</span> parseMuid(<span class="tok-type">string</span> $b36): <span class="tok-keyword">array</span> {</span></span><span class="code-line"><span class="line-num">12</span><span class="line-content">    $raw = (<span class="tok-type">int</span>)base_convert(strtolower(trim($b36)), <span class="tok-number">36</span>, <span class="tok-number">10</span>);</span></span><span class="code-line"><span class="line-num">13</span><span class="line-content">    <span class="tok-keyword">return</span> [<span class="tok-string">'raw'</span> =&gt; $raw, <span class="tok-string">'base36'</span> =&gt; strtolower(trim($b36)), <span class="tok-string">'elapsed'</span> =&gt; intdiv($raw, <span class="tok-number">10000</span>), <span class="tok-string">'rand'</span> =&gt; $raw % <span class="tok-number">10000</span>];</span></span><span class="code-line"><span class="line-num">14</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">15</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">16</span><span class="line-content"><span class="tok-keyword">function</span> generateSecret(): <span class="tok-type">string</span> {</span></span><span class="code-line"><span class="line-num">17</span><span class="line-content">    $bytes = array_values(unpack(<span class="tok-string">&quot;C*&quot;</span>, random_bytes(<span class="tok-number">32</span>)));</span></span><span class="code-line"><span class="line-num">18</span><span class="line-content">    $res = <span class="tok-string">&quot;&quot;</span>;</span></span><span class="code-line"><span class="line-num">19</span><span class="line-content">    <span class="tok-keyword">while</span> (<span class="tok-type">true</span>) {</span></span><span class="code-line"><span class="line-num">20</span><span class="line-content">        $zero = <span class="tok-type">true</span>; $rem = <span class="tok-number">0</span>;</span></span><span class="code-line"><span class="line-num">21</span><span class="line-content">        <span class="tok-keyword">for</span> ($i = <span class="tok-number">0</span>; $i &lt; <span class="tok-number">32</span>; $i++) {</span></span><span class="code-line"><span class="line-num">22</span><span class="line-content">            $cur = $rem * <span class="tok-number">256</span> + $bytes[$i];</span></span><span class="code-line"><span class="line-num">23</span><span class="line-content">            $bytes[$i] = intdiv($cur, <span class="tok-number">62</span>);</span></span><span class="code-line"><span class="line-num">24</span><span class="line-content">            $rem = $cur % <span class="tok-number">62</span>;</span></span><span class="code-line"><span class="line-num">25</span><span class="line-content">            <span class="tok-keyword">if</span> ($bytes[$i] !== <span class="tok-number">0</span>) $zero = <span class="tok-type">false</span>;</span></span><span class="code-line"><span class="line-num">26</span><span class="line-content">        }</span></span><span class="code-line"><span class="line-num">27</span><span class="line-content">        $res = B62[$rem] . $res;</span></span><span class="code-line"><span class="line-num">28</span><span class="line-content">        <span class="tok-keyword">if</span> ($zero) <span class="tok-keyword">break</span>;</span></span><span class="code-line"><span class="line-num">29</span><span class="line-content">    }</span></span><span class="code-line"><span class="line-num">30</span><span class="line-content">    <span class="tok-keyword">return</span> str_pad($res, <span class="tok-number">43</span>, <span class="tok-string">'0'</span>, STR_PAD_LEFT);</span></span><span class="code-line"><span class="line-num">31</span><span class="line-content">}</span></span></code></pre>
         </div>
 
-        <!-- Bash -->
-        <div class="code-panel-sm" id="code-bash">
+        <!-- POSIX Shell -->
+        <div class="code-panel-sm" id="code-sh">
           <div class="code-head-sm">
-            <span>muid.sh</span>
-            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-bash'), this)">Copy Code</button>
+            <span class="code-file-label">
+              <svg class="icon lang-icon" aria-hidden="true"><use href="#lang-sh"></use></svg>
+              <span>muid.sh</span>
+            </span>
+            <button type="button" class="copy-btn" onclick="copySnippet(document.getElementById('src-sh'), this)">
+              <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+              <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+              <span>Copy Code</span>
+            </button>
           </div>
-          <pre class="code-pre-sm"><code id="src-bash">#!/usr/bin/env bash
-EPOCH=1790022600
-B36="0123456789abcdefghijklmnopqrstuvwxyz"
-B62="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+          <pre class="code-pre-sm"><code id="src-sh" data-raw="#!/bin/sh
+# MUID &amp; Secret generator in pure POSIX sh
+EPOCH=1790022600 # 2026-09-22 00:00:00 UTC+3:30 (Day 0)
+B36=&quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;
+B62=&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;
 
 generate_muid() {
-    local raw=$(( ($(date +%s) - EPOCH) * 10000 + (RANDOM % 10000) ))
-    local n=$raw b36=""
-    while [ $n -gt 0 ]; do
-        b36="${B36:$((n % 36)):1}$b36"
-        n=$(( n / 36 ))
-    done
-    echo "$b36"
+    now=$(date +%s)
+    rand=$(od -An -N2 -tu2 /dev/urandom | tr -d &quot; \t\n&quot;)
+    rand=$(( rand % 10000 ))
+    raw=$(( (now - EPOCH) * 10000 + rand ))
+
+    # Convert 64-bit integer to Base36
+    printf &quot;%s %s\n&quot; &quot;$raw&quot; &quot;$B36&quot; | awk &quot;{
+        n = \$1; b36 = \$2; res = \&quot;\&quot;
+        while (n &gt; 0) {
+            rem = n % 36
+            res = substr(b36, rem + 1, 1) res
+            n = int(n / 36)
+        }
+        printf \&quot;%s\&quot;, res
+    }&quot;
 }
 
 generate_secret() {
-    local bytes=( $(od -An -v -tu1 -N32 /dev/urandom) )
-    local res=""
-    while :; do
-        local zero=1 rem=0
-        for (( i=0; i<32; i++ )); do
-            local cur=$(( rem * 256 + bytes[i] ))
-            bytes[i]=$(( cur / 62 ))
-            rem=$(( cur % 62 ))
-            [ ${bytes[i]} -ne 0 ] && zero=0
-        done
-        res="${B62:$rem:1}$res"
-        [ $zero -eq 1 ] && break
-    done
-    while [ ${#res} -lt 43 ]; do res="0$res"; done
-    echo "$res"
+    # 32 CSPRNG bytes to 43 Base62 characters
+    od -An -v -tu1 -N32 /dev/urandom | awk -v b62=&quot;$B62&quot; &quot;{
+        for (i = 1; i &lt;= NF; i++) bytes[n++] = \$i
+    }
+    END {
+        res = \&quot;\&quot;
+        while (1) {
+            all_zero = 1; rem = 0
+            for (i = 0; i &lt; 32; i++) {
+                cur = rem * 256 + bytes[i]
+                bytes[i] = int(cur / 62)
+                rem = cur % 62
+                if (bytes[i] != 0) all_zero = 0
+            }
+            res = substr(b62, rem + 1, 1) res
+            if (all_zero) break
+        }
+        while (length(res) &lt; 43) res = \&quot;0\&quot; res
+        printf \&quot;%s\&quot;, res
+    }&quot;
 }
 
-echo "$(generate_muid):$(generate_secret)"
-</code></pre>
+printf &quot;%s:%s\n&quot; &quot;$(generate_muid)&quot; &quot;$(generate_secret)&quot;"><span class="code-line"><span class="line-num">1</span><span class="line-content"><span class="tok-comment">#!/bin/sh</span></span></span><span class="code-line"><span class="line-num">2</span><span class="line-content"><span class="tok-comment"># MUID &amp; Secret generator in pure POSIX sh</span></span></span><span class="code-line"><span class="line-num">3</span><span class="line-content">EPOCH=<span class="tok-number">1790022600</span> <span class="tok-comment"># 2026-09-22 00:00:00 UTC+3:30 (Day 0)</span></span></span><span class="code-line"><span class="line-num">4</span><span class="line-content">B36=<span class="tok-string">&quot;0123456789abcdefghijklmnopqrstuvwxyz&quot;</span></span></span><span class="code-line"><span class="line-num">5</span><span class="line-content">B62=<span class="tok-string">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span></span></span><span class="code-line"><span class="line-num">6</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">7</span><span class="line-content">generate_muid() {</span></span><span class="code-line"><span class="line-num">8</span><span class="line-content">    now=$(date +%s)</span></span><span class="code-line"><span class="line-num">9</span><span class="line-content">    rand=$(od -An -N2 -tu2 /dev/urandom | tr -d <span class="tok-string">&quot; \t\n&quot;</span>)</span></span><span class="code-line"><span class="line-num">10</span><span class="line-content">    rand=$(( rand % <span class="tok-number">10000</span> ))</span></span><span class="code-line"><span class="line-num">11</span><span class="line-content">    raw=$(( (now - EPOCH) * <span class="tok-number">10000</span> + rand ))</span></span><span class="code-line"><span class="line-num">12</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">13</span><span class="line-content">    <span class="tok-comment"># Convert 64-bit integer to Base36</span></span></span><span class="code-line"><span class="line-num">14</span><span class="line-content">    printf <span class="tok-string">&quot;%s %s\n&quot;</span> <span class="tok-string">&quot;$raw&quot;</span> <span class="tok-string">&quot;$B36&quot;</span> | awk "{</span></span><span class="code-line"><span class="line-num">15</span><span class="line-content">        n = \$<span class="tok-number">1</span>; b36 = \$<span class="tok-number">2</span>; res = \"\"</span></span><span class="code-line"><span class="line-num">16</span><span class="line-content">        <span class="tok-keyword">while</span> (n &gt; <span class="tok-number">0</span>) {</span></span><span class="code-line"><span class="line-num">17</span><span class="line-content">            rem = n % <span class="tok-number">36</span></span></span><span class="code-line"><span class="line-num">18</span><span class="line-content">            res = substr(b36, rem + <span class="tok-number">1</span>, <span class="tok-number">1</span>) res</span></span><span class="code-line"><span class="line-num">19</span><span class="line-content">            n = <span class="tok-type">int</span>(n / <span class="tok-number">36</span>)</span></span><span class="code-line"><span class="line-num">20</span><span class="line-content">        }</span></span><span class="code-line"><span class="line-num">21</span><span class="line-content">        printf \"%s\", res</span></span><span class="code-line"><span class="line-num">22</span><span class="line-content">    }"</span></span><span class="code-line"><span class="line-num">23</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">24</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">25</span><span class="line-content">generate_secret() {</span></span><span class="code-line"><span class="line-num">26</span><span class="line-content">    <span class="tok-comment"># 32 CSPRNG bytes to 43 Base62 characters</span></span></span><span class="code-line"><span class="line-num">27</span><span class="line-content">    od -An -v -tu1 -N32 /dev/urandom | awk -v b62=<span class="tok-string">&quot;$B62&quot;</span> "{</span></span><span class="code-line"><span class="line-num">28</span><span class="line-content">        <span class="tok-keyword">for</span> (i = <span class="tok-number">1</span>; i &lt;= NF; i++) bytes[n++] = \$i</span></span><span class="code-line"><span class="line-num">29</span><span class="line-content">    }</span></span><span class="code-line"><span class="line-num">30</span><span class="line-content">    END {</span></span><span class="code-line"><span class="line-num">31</span><span class="line-content">        res = \"\"</span></span><span class="code-line"><span class="line-num">32</span><span class="line-content">        <span class="tok-keyword">while</span> (<span class="tok-number">1</span>) {</span></span><span class="code-line"><span class="line-num">33</span><span class="line-content">            all_zero = <span class="tok-number">1</span>; rem = <span class="tok-number">0</span></span></span><span class="code-line"><span class="line-num">34</span><span class="line-content">            <span class="tok-keyword">for</span> (i = <span class="tok-number">0</span>; i &lt; <span class="tok-number">32</span>; i++) {</span></span><span class="code-line"><span class="line-num">35</span><span class="line-content">                cur = rem * <span class="tok-number">256</span> + bytes[i]</span></span><span class="code-line"><span class="line-num">36</span><span class="line-content">                bytes[i] = <span class="tok-type">int</span>(cur / <span class="tok-number">62</span>)</span></span><span class="code-line"><span class="line-num">37</span><span class="line-content">                rem = cur % <span class="tok-number">62</span></span></span><span class="code-line"><span class="line-num">38</span><span class="line-content">                <span class="tok-keyword">if</span> (bytes[i] != <span class="tok-number">0</span>) all_zero = <span class="tok-number">0</span></span></span><span class="code-line"><span class="line-num">39</span><span class="line-content">            }</span></span><span class="code-line"><span class="line-num">40</span><span class="line-content">            res = substr(b62, rem + <span class="tok-number">1</span>, <span class="tok-number">1</span>) res</span></span><span class="code-line"><span class="line-num">41</span><span class="line-content">            <span class="tok-keyword">if</span> (all_zero) <span class="tok-keyword">break</span></span></span><span class="code-line"><span class="line-num">42</span><span class="line-content">        }</span></span><span class="code-line"><span class="line-num">43</span><span class="line-content">        <span class="tok-keyword">while</span> (length(res) &lt; <span class="tok-number">43</span>) res = \"<span class="tok-number">0</span>\" res</span></span><span class="code-line"><span class="line-num">44</span><span class="line-content">        printf \"%s\", res</span></span><span class="code-line"><span class="line-num">45</span><span class="line-content">    }"</span></span><span class="code-line"><span class="line-num">46</span><span class="line-content">}</span></span><span class="code-line"><span class="line-num">47</span><span class="line-content"> </span></span><span class="code-line"><span class="line-num">48</span><span class="line-content">printf <span class="tok-string">&quot;%s:%s\n&quot;</span> <span class="tok-string">&quot;$(generate_muid)&quot;</span> <span class="tok-string">&quot;$(generate_secret)&quot;</span></span></span></code></pre>
         </div>
       </div>
     </div>
   </main>
 
+  <!-- =============================================
+       MOBILE BOTTOM NAVIGATION BAR
+       ============================================= -->
+  <nav class="bottom-nav" aria-label="Mobile Navigation">
+    <a href="/credentials" class="bottom-nav-link active" data-route="/credentials">
+      <svg class="icon bottom-nav-icon" aria-hidden="true"><use href="#nav-credentials"></use></svg>
+      <span data-i18n="nav.credentials">Credentials</span>
+    </a>
+    <a href="/spec" class="bottom-nav-link" data-route="/spec">
+      <svg class="icon bottom-nav-icon" aria-hidden="true"><use href="#nav-spec"></use></svg>
+      <span data-i18n="nav.spec">Specification</span>
+    </a>
+    <a href="/examples" class="bottom-nav-link" data-route="/examples">
+      <svg class="icon bottom-nav-icon" aria-hidden="true"><use href="#nav-examples"></use></svg>
+      <span data-i18n="nav.code">Examples</span>
+    </a>
+  </nav>
+
   <!-- Toast Notice -->
   <div id="toast-notice" class="toast-notice">
-    <svg class="icon" viewBox="0 0 24 24" style="color: var(--success); width:1rem; height:1rem;"><use href="#check"></use></svg>
+    <svg class="icon icon-base icon-success" viewBox="0 0 24 24"><use href="#check"></use></svg>
     <span class="toast-msg">Copied!</span>
   </div>
 

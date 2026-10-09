@@ -164,7 +164,7 @@ const TRANSLATIONS = {
     "pref.theme": "Theme",
     "pref.language": "Language",
     "hero.badge": "Standard Spec",
-    "hero.title": "Mehr Unique ID <span class=\"highlight\">(MUID)</span>",
+    "hero.title_lead": "Mehr Unique ID",
     "hero.subtitle": "64-bit BigInt database IDs, Base36 case-insensitive identifiers, and 256-bit Base62 account authentication tokens.",
     "spec.title": "MUID Specification",
     "spec.subtitle": "Technical architecture, Tehran epoch offset, numeric BigInt representation, and token security parameters.",
@@ -174,12 +174,11 @@ const TRANSLATIONS = {
     "spec.secret_desc": "256-bit security hash and standardized authorization token regex:",
     "spec.decision_title": "The Genesis Epoch Decision (Why 2026-09-22?)",
     "spec.decision_badge": "Day 0 Offset",
-    "spec.decision_desc": "The first day of Mehr being released was <strong>2026-09-23</strong> (which corresponds to <strong>2585-07-01</strong>, or 1 Mehr 2585). MUID starts exactly one day before the release date to anchor the timeline cleanly at <strong>Day 0</strong> (which then becomes <strong>2585-06-31</strong> or <strong>2026-09-22</strong>):",
     "spec.step0_label": "Day 0 · Genesis Epoch",
     "spec.step0_desc": "The timeline begins at 00:00:00 (UTC+3:30) (Unix timestamp 1790022600). Genesis state, system bootstrapping, and initial node migrations execute cleanly within this 0-indexed day without producing negative offsets.",
     "spec.step1_label": "Day 1 · Official Release",
     "spec.step1_desc": "The official release of Mehr begins. User accounts created on launch day start from Day 1 (after 86,400s), ensuring all public identifiers follow clean positive natural numbers.",
-    "examples.subtitle": "Self-contained production implementations in Go, JavaScript, TypeScript, Python, PHP, and Bash.",
+    "examples.subtitle": "Self-contained production implementations in Go, JavaScript, TypeScript, Python, PHP, and POSIX Shell.",
     "btn.regenerate": "Regenerate",
     "label.account_id": "Account ID (Base36)",
     "label.raw_id": "Raw Database ID (BigInt)",
@@ -196,7 +195,7 @@ const TRANSLATIONS = {
     "pref.theme": "پوسته",
     "pref.language": "زبان",
     "hero.badge": "استاندارد رسمی",
-    "hero.title": "شناسه یکتای مهر <span class=\"highlight\">(MUID)</span>",
+    "hero.title_lead": "شناسه یکتای مهر",
     "hero.subtitle": "شناسه‌های ۶۴ بیتی در دیتابیس، نمایش فشرده Base36 و توکن‌های ۲۵۶ بیتی امنیتی Base62.",
     "spec.title": "مشخصات فنی شناسه یکتای مهر",
     "spec.subtitle": "معماری فنی، مبدا زمانی تهران، ساختار عدد بزرگ دیتابیس و اعتبارسنجی توکن.",
@@ -206,12 +205,11 @@ const TRANSLATIONS = {
     "spec.secret_desc": "رمز امنیتی ۲۵۶ بیتی و قالب اعتبارسنجی استاندارد توکن:",
     "spec.decision_title": "علت انتخاب مبدا زمانی (چرا ۲۰۲۶-۰۹-۲۲؟)",
     "spec.decision_badge": "آفست روز صفر",
-    "spec.decision_desc": "نخستین روز انتشار رسمی مهر، تاریخ <strong>۲۰۲۶-۰۹-۲۳</strong> برابر با <strong>۲۵۸۵-۰۷-۰۱</strong> (۱ مهر ۲۵۸۵) است. مبدا زمانی MUID دقیقا یک روز قبل آغاز می‌شود تا چرخه شناسه‌ها از <strong>روز صفر</strong> (برابر با <strong>۲۵۸۵-۰۶-۳۱</strong> یا <strong>۲۰۲۶-۰۹-۲۲</strong>) پایه‌گذاری شود:",
     "spec.step0_label": "روز صفر · مبدا پیدایش (Genesis)",
     "spec.step0_desc": "شمارش زمان از ۰۰:۰۰:۰۰ به وقت تهران (تایم‌استمپ ۱۷۹۰۰۲۲۶۰۰) آغاز می‌شود. داده‌های پایه جنسیس و پیکربندی اولیه بدون نیاز به زمان‌های منفی در این روز صفر ثبت می‌شوند.",
     "spec.step1_label": "روز یکم · انتشار عمومی مهر",
     "spec.step1_desc": "آغاز فعالیت عمومی مهر (۱ مهر ۲۵۸۵). شناسه‌های کاربران از روز یکم (پس از ۸۶٬۴۰۰ ثانیه) ثبت شده و به شکلی منظم و افزایشی ادامه می‌یابند.",
-    "examples.subtitle": "پیاده‌سازی مستقل در زبان‌های Go، جاوااسکریپت، تایپ‌اسکریپت، پایتون، PHP و Bash.",
+    "examples.subtitle": "پیاده‌سازی مستقل در زبان‌های Go، جاوااسکریپت، تایپ‌اسکریپت، پایتون، PHP و POSIX Shell.",
     "btn.regenerate": "تولید مجدد",
     "label.account_id": "شناسه حساب (Base36)",
     "label.raw_id": "شناسه خام دیتابیس (BigInt)",
@@ -262,9 +260,8 @@ if (typeof window !== 'undefined') {
       const locale = localStorage.getItem('mehr_locale') || 'en';
       showToast(TRANSLATIONS[locale]?.copied || 'Copied!');
       if (btnElement) {
-        const orig = btnElement.innerHTML;
-        btnElement.innerHTML = `<svg class="icon" viewBox="0 0 24 24" style="width:1rem;height:1rem;"><use href="#check"></use></svg>`;
-        setTimeout(() => btnElement.innerHTML = orig, 1200);
+        btnElement.classList.add('copied');
+        setTimeout(() => btnElement.classList.remove('copied'), 1200);
       }
     });
   };
@@ -302,7 +299,7 @@ function initCredentialsController() {
     const matches = API_TOKEN_REGEX.test(token);
     if (elRegex) {
       elRegex.textContent = matches ? 'API Regex Valid' : 'Regex Non-standard';
-      elRegex.className = `meta-pill ${matches ? 'regex-pill' : ''}`;
+      elRegex.classList.toggle('regex-pill', matches);
     }
   }
 
@@ -314,11 +311,8 @@ function initCredentialsController() {
 
   if (btnRegen) {
     btnRegen.addEventListener('click', () => {
-      const icon = btnRegen.querySelector('.regenerate-icon');
-      if (icon) icon.style.transform = 'rotate(360deg)';
-      setTimeout(() => {
-        if (icon) icon.style.transform = '';
-      }, 300);
+      btnRegen.classList.add('spinning');
+      setTimeout(() => btnRegen.classList.remove('spinning'), 300);
       regenerate();
     });
   }
@@ -416,11 +410,7 @@ function setLocale(lang, save = true) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
     if (dict[k]) {
-      if (dict[k].includes('<')) {
-        el.innerHTML = dict[k];
-      } else {
-        el.textContent = dict[k];
-      }
+      el.textContent = dict[k];
     }
   });
   const input = document.getElementById('inspector-input');
@@ -476,7 +466,7 @@ function initRouter() {
       }
     });
 
-    document.querySelectorAll('.nav-link[data-route]').forEach(link => {
+    document.querySelectorAll('.nav-link[data-route], .bottom-nav-link[data-route]').forEach(link => {
       const route = link.getAttribute('data-route');
       if (route === normalized || (normalized === '/credentials' && (route === '/' || route === '/credentials'))) {
         link.classList.add('active');
@@ -570,6 +560,7 @@ export function highlightCodeWithLineNumbers(rawCode) {
 
 function highlightAllCodeBlocks() {
   document.querySelectorAll('pre code').forEach(block => {
+    if (block.querySelector('.code-line')) return;
     if (!block.dataset.raw) {
       block.dataset.raw = block.textContent;
     }
