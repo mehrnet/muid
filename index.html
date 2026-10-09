@@ -450,6 +450,19 @@
                 <p style="font-size: var(--text-xs); color: var(--text-dim); margin-top: 0.25rem;">Bearer token verification, API access, and HMAC signing.</p>
               </div>
             </div>
+
+            <div style="margin-top: 1.25rem; padding: 0.75rem 1rem; background: var(--input-bg); border: 1px solid var(--border-strong); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg class="icon" viewBox="0 0 24 24" style="color: var(--accent);"><use href="/icons.svg#check-circle"></use></svg>
+                <span style="font-size: var(--text-xs); color: var(--text-secondary); font-weight: 600;">Standard API Regex Validator:</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <code style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--accent); font-weight: 700;">^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$</code>
+                <button type="button" class="copy-mini-btn" onclick="copySnippet('^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', this)" title="Copy Regex">
+                  <svg class="icon" viewBox="0 0 24 24"><use href="/icons.svg#copy"></use></svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -568,6 +581,47 @@
                   <td><strong>ClickHouse</strong></td>
                   <td><code>UInt64</code></td>
                   <td>OrderBy (created_at, id)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="font-size: var(--text-xl); font-weight: 800; margin-top: 2.5rem; margin-bottom: 0.5rem;">5. API Regex Validator</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+            All backend APIs, gateways, routers, and microservices across the Mehrnet ecosystem validate incoming account tokens using this unified regular expression:
+          </p>
+          <div class="math-card" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+            <code style="font-size: 1.1rem; color: var(--accent); font-weight: 700; letter-spacing: 0.03em;">^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$</code>
+            <button type="button" class="copy-code-btn" onclick="copySnippet('^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', this)">
+              <svg class="icon" viewBox="0 0 24 24"><use href="/icons.svg#copy"></use></svg>
+              <span>Copy Pattern</span>
+            </button>
+          </div>
+
+          <div class="spec-table-wrap">
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th>Pattern Segment</th>
+                  <th>Target Component</th>
+                  <th>Rules & Constraints</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>^[0-9a-z]{6,12}</code></td>
+                  <td><strong>Public Account ID (MUID)</strong></td>
+                  <td>6 to 12 lowercase alphanumeric characters representing the Base36 identifier. Case-insensitive at input, normalized to lowercase.</td>
+                </tr>
+                <tr>
+                  <td><code>:</code></td>
+                  <td><strong>Delimiter</strong></td>
+                  <td>Single ASCII colon separator between account ID and secret hash.</td>
+                </tr>
+                <tr>
+                  <td><code>[0-9a-zA-Z]{43}$</code></td>
+                  <td><strong>Cryptographic Secret</strong></td>
+                  <td>Exactly 43 Base62 characters encoding 32 bytes (256 bits) of CSPRNG entropy. Case-sensitive.</td>
                 </tr>
               </tbody>
             </table>

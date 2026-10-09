@@ -186,3 +186,18 @@ test('MUID Generation from epoch timestamp', () => {
   assert.equal(muid.raw, 13954201234n);
   assert.equal(muid.base36, '6eryyky');
 });
+
+test('API Regex Validator: ^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', () => {
+  const API_TOKEN_REGEX = /^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/;
+  const validToken = '6gq46u:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ';
+  assert.ok(API_TOKEN_REGEX.test(validToken), 'Sample token must match regex');
+
+  const validToken2 = '6eryyky:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ';
+  assert.ok(API_TOKEN_REGEX.test(validToken2), 'Vector 2 token must match regex');
+
+  // Negative tests
+  assert.equal(API_TOKEN_REGEX.test('short:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ'), false); // ID < 6 chars
+  assert.equal(API_TOKEN_REGEX.test('6gq46u:short_secret'), false); // Secret != 43 chars
+  assert.equal(API_TOKEN_REGEX.test('6GQ46U:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ'), false); // ID must be normalized lowercase
+});
+

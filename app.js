@@ -122,13 +122,16 @@ export function decodeBase62(str) {
   return res;
 }
 
+export const API_TOKEN_REGEX = /^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$/;
+
 export function generateSecret() {
   const bytes = crypto.getRandomValues(new Uint8Array(32));
   let num = 0n;
   for (const b of bytes) {
     num = (num << 8n) | BigInt(b);
   }
-  return encodeBase62(num);
+  const rawBase62 = encodeBase62(num);
+  return rawBase62.padStart(43, '0');
 }
 
 export function parseAccountToken(token) {
@@ -141,14 +144,18 @@ export function parseAccountToken(token) {
   const secretPart = clean.slice(sepIdx + 1);
 
   const muid = parseMuid(idPart);
-  if (!secretPart || !/^[0-9A-Za-z]{40,46}$/.test(secretPart)) {
+  if (!secretPart || !/^[0-9A-Za-z]{42,43}$/.test(secretPart)) {
     throw new Error('Invalid secret hash: must be 42-43 base62 characters');
   }
+
+  const normalizedToken = `${muid.base36}:${secretPart}`;
+  const matchesApiRegex = API_TOKEN_REGEX.test(normalizedToken);
 
   return {
     accountId: muid.base36,
     accountSecret: secretPart,
-    muid
+    muid,
+    matchesApiRegex
   };
 }
 
@@ -512,13 +519,23 @@ function initPlayground() {
   const tokStatusBadge = document.getElementById('tok-status-badge');
   const tokErrorBox = document.getElementById('play-tok-error');
 
-  function displayToken(accId, accSec, isValid = true, errorMsg = '') {
+  function displayToken(accId, accSec, isValid = true, errorMsg = '', matchesRegex = true) {
     if (tokPartId) tokPartId.textContent = accId || '------';
     if (tokPartSec) tokPartSec.textContent = accSec || '-------------------------------------------';
     if (tokStatusBadge) {
-      tokStatusBadge.textContent = isValid ? 'VALID TOKEN' : 'INVALID';
-      tokStatusBadge.style.color = isValid ? 'var(--success)' : 'var(--error)';
-      tokStatusBadge.style.backgroundColor = isValid ? 'var(--success-bg)' : 'var(--error-bg)';
+      if (!isValid) {
+        tokStatusBadge.textContent = 'INVALID TOKEN';
+        tokStatusBadge.style.color = 'var(--error)';
+        tokStatusBadge.style.backgroundColor = 'var(--error-bg)';
+      } else if (matchesRegex) {
+        tokStatusBadge.textContent = 'VALID · API REGEX PASS';
+        tokStatusBadge.style.color = 'var(--success)';
+        tokStatusBadge.style.backgroundColor = 'var(--success-bg)';
+      } else {
+        tokStatusBadge.textContent = 'VALID MUID';
+        tokStatusBadge.style.color = 'var(--accent)';
+        tokStatusBadge.style.backgroundColor = 'var(--accent-subtle)';
+      }
     }
     if (tokErrorBox) {
       if (isValid || !errorMsg) {
@@ -535,10 +552,10 @@ function initPlayground() {
     if (!str) return;
     try {
       const res = parseAccountToken(str);
-      displayToken(res.accountId, res.accountSecret, true);
+      displayToken(res.accountId, res.accountSecret, true, '', res.matchesApiRegex);
     } catch (err) {
       const parts = str.split(':');
-      displayToken(parts[0] || '?', parts[1] || '?', false, err.message);
+      displayToken(parts[0] || '?', parts[1] || '?', false, err.message, false);
     }
   }
 

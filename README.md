@@ -52,6 +52,15 @@ AccountID      = Base36(RawNumericID)  [case-insensitive]
 - **Account Token:** `"<account id>:<account secret>"`
   - Example: `6gq46u:1Xy7K9pQ2LmN4zBt8vXw3zR7kM6bC5dA4e3f2g1h0iJ`
 
+### 5. API Regex Validator
+All backend gateways, APIs, and microservices validate account tokens using this unified regular expression:
+```regex
+^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$
+```
+- `^[0-9a-z]{6,12}`: Base36 Account ID (6 to 12 lowercase characters).
+- `:`: Delimiter colon.
+- `[0-9a-zA-Z]{43}$`: 43-character Base62 256-bit cryptographic secret hash.
+
 ---
 
 ## 💻 Implementation Examples
