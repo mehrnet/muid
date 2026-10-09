@@ -30,6 +30,13 @@ MUID solves common database indexing, serialization, and developer ergonomics pr
 - **Epoch Date (UTC):** `2026-09-21 20:30:00 UTC`
 - **Unix Timestamp:** `1790022600` seconds
 
+#### 💡 The Genesis Epoch Decision (Why 2026-09-22?)
+The first official release day of Mehr was **2026-09-23** (which corresponds to **2585-07-01** / 1 Mehr 2585 in the Imperial calendar).
+
+The MUID epoch was deliberately anchored at **Day 0** (one day prior to release, `2585-06-31` / 31 Shahrivar 2585):
+- **Day 0 · Genesis (`2026-09-22`):** System bootstrap, internal migrations, and node configuration execute cleanly in the `[0, 86400)` second window without requiring negative timestamps.
+- **Day 1 · Public Release (`2026-09-23`):** Official launch day begins after 86,400 elapsed seconds, ensuring all public user accounts and identifiers start as clean, positive, naturally ascending numbers.
+
 ### 2. Identifier Composition
 ```
 ElapsedSeconds = UnixTimestamp - 1790022600

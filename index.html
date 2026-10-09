@@ -301,9 +301,9 @@
           <div class="spec-card">
             <h3>
               <svg class="icon" viewBox="0 0 24 24" style="color:var(--success);"><use href="#lock"></use></svg>
-              <span>2. Secret & API Regex</span>
+              <span data-i18n="spec.secret_title">2. Secret & API Regex</span>
             </h3>
-            <p>256-bit security hash and standardized authorization token regex:</p>
+            <p data-i18n="spec.secret_desc">256-bit security hash and standardized authorization token regex:</p>
             <ul>
               <li><strong>Secret:</strong> 32 CSPRNG bytes in Base62 (43 alphanumeric chars)</li>
               <li><strong>Token:</strong> <code>"&lt;account id&gt;:&lt;account secret&gt;"</code></li>
@@ -311,6 +311,30 @@
             <div class="code-box-mini">
               <span>^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$</span>
               <button type="button" class="copy-btn" onclick="copySnippet('^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', this)">Copy</button>
+            </div>
+          </div>
+
+          <!-- Card 3: Genesis Epoch Decision -->
+          <div class="spec-card full-width">
+            <div class="spec-card-head">
+              <h3>
+                <svg class="icon" viewBox="0 0 24 24" style="color:var(--accent);"><use href="#zap"></use></svg>
+                <span data-i18n="spec.decision_title">The Genesis Epoch Decision (Why 2026-09-22?)</span>
+              </h3>
+              <span class="badge" data-i18n="spec.decision_badge">Day 0 Offset</span>
+            </div>
+            <p data-i18n="spec.decision_desc">The first day of Mehr being released was <strong>2026-09-23</strong> (which corresponds to <strong>2585-07-01</strong>, or 1 Mehr 2585). MUID starts exactly one day before the release date to anchor the timeline cleanly at <strong>Day 0</strong> (which then becomes <strong>2585-06-31</strong> or <strong>2026-09-22</strong>):</p>
+            <div class="decision-grid">
+              <div class="decision-step">
+                <div class="step-label" data-i18n="spec.step0_label">Day 0 · Genesis Epoch</div>
+                <div class="step-date">2026-09-22 <span class="dim">· 2585-06-31 (31 Shahrivar)</span></div>
+                <p class="step-desc" data-i18n="spec.step0_desc">The timeline begins at <code>00:00:00 (UTC+3:30)</code> (Unix timestamp <code>1790022600</code>). Genesis state, system bootstrapping, and initial node migrations execute cleanly within this 0-indexed day without producing negative offsets.</p>
+              </div>
+              <div class="decision-step">
+                <div class="step-label" data-i18n="spec.step1_label">Day 1 · Official Release</div>
+                <div class="step-date">2026-09-23 <span class="dim">· 2585-07-01 (1 Mehr)</span></div>
+                <p class="step-desc" data-i18n="spec.step1_desc">The official release of Mehr begins. User accounts created on launch day start from Day 1 (after 86,400s), ensuring all public identifiers follow clean positive natural numbers.</p>
+              </div>
             </div>
           </div>
         </div>
