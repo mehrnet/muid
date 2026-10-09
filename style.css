@@ -225,9 +225,11 @@ code, pre, .font-mono {
   cursor: pointer;
 }
 
+.brand-logo,
 .brand-cube {
   width: 1.85rem;
   height: 1.85rem;
+  flex-shrink: 0;
 }
 
 .brand-mark {
