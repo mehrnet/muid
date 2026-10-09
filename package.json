@@ -1,0 +1,15 @@
+{
+  "name": "muid",
+  "version": "1.0.0",
+  "description": "Mehr Unique ID (MUID) specification, documentation and interactive tools for the Mehrnet ecosystem",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/**/*.test.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4.128.0"
+  }
+}
