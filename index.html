@@ -4,9 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mehr Unique ID (MUID) | Specification &amp; Tools</title>
-  <meta name="description" content="Specification and interactive generator for Mehr Unique ID (MUID) — K-sortable 64-bit database IDs and 256-bit cryptographic account tokens.">
+  <meta name="description" content="Technical specification and generator for Mehr Unique ID (MUID) — K-sortable 64-bit BigInt database IDs, Base36 case-insensitive identifiers, and 256-bit Base62 authentication tokens.">
   <meta name="author" content="Mehrnet">
   <meta name="theme-color" content="#0c0f12">
+
+  <link rel="canonical" href="https://muid.mehrnet.com/">
+
+  <!-- Open Graph / Facebook / LinkedIn / Telegram -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://muid.mehrnet.com/">
+  <meta property="og:site_name" content="Mehrnet">
+  <meta property="og:title" content="Mehr Unique ID (MUID) | Specification &amp; Tools">
+  <meta property="og:description" content="K-sortable 64-bit database BigInts, Base36 case-insensitive identifiers, and 256-bit cryptographic Base62 account tokens.">
+  <meta property="og:image" content="https://muid.mehrnet.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mehr Unique ID (MUID) Technical Architecture and Credential Tools">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@mehrnet">
+  <meta name="twitter:title" content="Mehr Unique ID (MUID) | Specification &amp; Tools">
+  <meta name="twitter:description" content="K-sortable 64-bit database BigInts, Base36 case-insensitive identifiers, and 256-bit cryptographic Base62 account tokens.">
+  <meta name="twitter:image" content="https://muid.mehrnet.com/og-image.png">
 
   <script>
     (function () {
@@ -99,7 +119,7 @@
 
     <!-- Language Icons -->
     <symbol id="lang-go" viewBox="0 0 24 24">
-      <path d="M4 12a8 8 0 0 1 14.9-4M20 12a8 8 0 0 1-13.8 5.4M13 12h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M1.811 10.231c-.047 0-.058-.023-.035-.059l.246-.315c.023-.035.081-.058.128-.058h4.172c.046 0 .058.035.035.07l-.199.303c-.023.036-.082.07-.117.07zM.047 11.306c-.047 0-.059-.023-.035-.058l.245-.316c.023-.035.082-.058.129-.058h5.328c.047 0 .07.035.058.07l-.093.28c-.012.047-.058.07-.105.07zm2.828 1.075c-.047 0-.059-.035-.035-.07l.163-.292c.023-.035.07-.07.117-.07h2.337c.047 0 .07.035.07.082l-.023.28c0 .047-.047.082-.082.082zm12.129-2.36c-.736.187-1.239.327-1.963.514-.176.046-.187.058-.34-.117-.174-.199-.303-.327-.548-.444-.737-.362-1.45-.257-2.115.175-.795.514-1.204 1.274-1.192 2.22.011.935.654 1.706 1.577 1.835.795.105 1.46-.175 1.987-.77.105-.13.198-.27.315-.434H10.47c-.245 0-.304-.152-.222-.35.152-.362.432-.97.596-1.274a.315.315 0 01.292-.187h4.253c-.023.316-.023.631-.07.947a4.983 4.983 0 01-.958 2.29c-.841 1.11-1.94 1.8-3.33 1.986-1.145.152-2.209-.07-3.143-.77-.865-.655-1.356-1.52-1.484-2.595-.152-1.274.222-2.419.993-3.424.83-1.086 1.928-1.776 3.272-2.02 1.098-.2 2.15-.07 3.096.571.62.41 1.063.97 1.356 1.648.07.105.023.164-.117.2m3.868 6.461c-1.064-.024-2.034-.328-2.852-1.029a3.665 3.665 0 01-1.262-2.255c-.21-1.32.152-2.489.947-3.529.853-1.122 1.881-1.706 3.272-1.95 1.192-.21 2.314-.095 3.33.595.923.63 1.496 1.484 1.648 2.605.198 1.578-.257 2.863-1.344 3.962-.771.783-1.718 1.273-2.805 1.495-.315.06-.63.07-.934.106zm2.78-4.72c-.011-.153-.011-.27-.034-.387-.21-1.157-1.274-1.81-2.384-1.554-1.087.245-1.788.935-2.045 2.033-.21.912.234 1.835 1.075 2.21.643.28 1.285.244 1.905-.07.923-.48 1.425-1.228 1.484-2.233z" fill="currentColor"/>
     </symbol>
     <symbol id="lang-js" viewBox="0 0 24 24">
       <rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -330,37 +350,133 @@
     <div class="page-view" id="view-spec">
       <div class="container">
         <div class="hero-header">
-          <h1 class="hero-title-compact" data-i18n="spec.title">MUID Specification</h1>
-          <p class="hero-subtitle" data-i18n="spec.subtitle">Technical architecture, Tehran epoch offset, numeric BigInt representation, and token security parameters.</p>
+          <h1 class="hero-title-compact" data-i18n="spec.title">MUID Technical Specification</h1>
+          <p class="hero-subtitle" data-i18n="spec.subtitle">Formal technical architecture, Tehran epoch mathematics, 64-bit BigInt database layout, Base36 identifiers, and 256-bit authentication tokens.</p>
+          <div class="spec-badges-wrap">
+            <span class="spec-badge-pill accent">64-Bit Native BigInt</span>
+            <span class="spec-badge-pill">K-Sortable Chronological Order</span>
+            <span class="spec-badge-pill">Case-Insensitive Base36</span>
+            <span class="spec-badge-pill">256-Bit Cryptographic Secret</span>
+            <span class="spec-badge-pill">Zero Sharding Coordination</span>
+          </div>
         </div>
 
         <div class="spec-grid-compact">
-          <!-- Card 1: ID Math & Epoch -->
-          <div class="spec-card">
-            <h3>
-              <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#hash"></use></svg>
-              <span data-i18n="spec.epoch_title">1. Epoch &amp; Numeric ID</span>
-            </h3>
-            <p data-i18n="spec.epoch_desc">Generated sequentially from the fixed Tehran epoch with 4 random digits:</p>
-            <ul>
-              <li><strong>Epoch:</strong> <code>2026-09-22 00:00:00 (UTC+3:30)</code> = <code>1790022600</code> sec</li>
-              <li><strong>Formula:</strong> <code>RawBigInt = (ElapsedSec * 10000) + Random(0..9999)</code></li>
-              <li><strong>Database:</strong> Stored as native 64-bit <code>BIGINT</code></li>
-              <li><strong>Vectors:</strong> <code>13954201234</code> &rarr; <code>6eryyky</code> | <code>390889398</code> &rarr; <code>6gq46u</code></li>
-            </ul>
+          <!-- Card 1: 64-Bit Numeric ID & Bitwise Anatomy -->
+          <div class="spec-card full-width">
+            <div class="spec-card-head">
+              <h3>
+                <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#hash"></use></svg>
+                <span>1. 64-Bit Numeric Database Identifier</span>
+              </h3>
+              <span class="badge">Engine Architecture</span>
+            </div>
+
+            <div data-lang="en">
+              <p>MUIDs are natively stored as standard 64-bit signed integers (SQL <code>BIGINT</code>). Every identifier combines elapsed seconds from the fixed Tehran epoch with four decimal random sequence digits:</p>
+            </div>
+            <div data-lang="fa">
+              <p>شناسه‌های MUID در پایگاه داده به صورت اعداد صحیح ۶۴ بیتی با علامت (SQL <code>BIGINT</code>) ذخیره می‌شوند. هر شناسه از ترکیب ثانیه‌های سپری‌شده از مبدا تهران و چهار رقم تصادفی تشکیل می‌شود:</p>
+            </div>
+
+            <!-- Mathematical Formulation Box -->
+            <div class="code-box-mini">
+              <span>RawBigInt = (ElapsedSeconds * 10000) + Random(0..9999)</span>
+              <button type="button" class="copy-btn" onclick="copySnippet('(ElapsedSeconds * 10000) + Random(0..9999)', this)">
+                <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+
+            <!-- Visual 64-Bit Integer Layout Diagram -->
+            <div class="anatomy-box">
+              <div class="spec-card-head">
+                <span class="ddl-item-head">64-Bit Signed Integer Layout</span>
+                <span class="step-date">64 Bits &middot; Up to 9.22 &times; 10<sup>18</sup></span>
+              </div>
+              <div class="anatomy-bar">
+                <div class="anatomy-segment-sign">0</div>
+                <div class="anatomy-segment-time">Elapsed Seconds &times; 10,000 (~49 Bits)</div>
+                <div class="anatomy-segment-rand">Rand (14b)</div>
+              </div>
+              <div class="anatomy-legend">
+                <span class="anatomy-legend-item"><span class="anatomy-dot sign"></span> Bit 63: Sign Bit (Always 0, Positive Integer)</span>
+                <span class="anatomy-legend-item"><span class="anatomy-dot time"></span> Bits 62–14: Monotonic Timestamp Range (~29 Million Years)</span>
+                <span class="anatomy-legend-item"><span class="anatomy-dot rand"></span> Bits 13–0: 4 Decimal Random Slots (0000–9999)</span>
+              </div>
+            </div>
+
+            <div data-lang="en">
+              <ul>
+                <li><strong>Fixed Epoch:</strong> <code>2026-09-22 00:00:00 (UTC+3:30)</code> = Unix timestamp <code>1790022600</code>.</li>
+                <li><strong>Throughput Capacity:</strong> 10,000 unique sequence slots per second per generator node before collision risk.</li>
+                <li><strong>Official Verification Vectors:</strong>
+                  <code>13954201234</code> &harr; Base36 <code>6eryyky</code> &nbsp;|&nbsp; 
+                  <code>390889398</code> &harr; Base36 <code>6gq46u</code>
+                </li>
+              </ul>
+            </div>
+            <div data-lang="fa">
+              <ul>
+                <li><strong>مبدا ثابت زمانی:</strong> <code>۲۰۲۶-۰۹-۲۲ ۰۰:۰۰:۰۰ (UTC+3:30)</code> برابر با تایم‌استمپ یونیکس <code>۱۷۹۰۰۲۲۶۰۰</code>.</li>
+                <li><strong>ظرفیت تولید:</strong> ۱۰٬۰۰۰ جایگاه تصادفی در هر ثانیه به ازای هر نود تولیدکننده بدون تداخل.</li>
+                <li><strong>نمونه‌های آزمون رسمی:</strong>
+                  <code>13954201234</code> &harr; در مبنای ۳۶ برابر با <code>6eryyky</code> &nbsp;|&nbsp; 
+                  <code>390889398</code> &harr; در مبنای ۳۶ برابر با <code>6gq46u</code>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <!-- Card 2: Secret & Token Regex -->
+          <!-- Card 2: Public Base36 Account Identifier -->
+          <div class="spec-card">
+            <h3>
+              <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#zap"></use></svg>
+              <span>2. Public Account ID (Base36)</span>
+            </h3>
+            <div data-lang="en">
+              <p>While databases store the native 64-bit integer, all public-facing APIs, URLs, user interfaces, and customer interactions use <strong>Base36</strong>:</p>
+              <ul>
+                <li><strong>Alphabet:</strong> <code>0123456789abcdefghijklmnopqrstuvwxyz</code> (36 characters).</li>
+                <li><strong>Case-Insensitivity:</strong> Normalized via lowercasing. Both <code>6gq46u</code> and <code>6GQ46U</code> resolve to the identical raw integer (<code>390889398</code>).</li>
+                <li><strong>URL &amp; Speech Safe:</strong> No hyphens, slashes, or special symbols. Safe for email links, phone support, and printed QR codes.</li>
+                <li><strong>Compact Length:</strong> Starts at 6 characters and expands to 12 characters over centuries.</li>
+              </ul>
+            </div>
+            <div data-lang="fa">
+              <p>در حالی که پایگاه داده عدد ۶۴ بیتی را ذخیره می‌کند، تمام APIهای عمومی، آدرس‌های وب و تعاملات کاربران از <strong>Base36</strong> استفاده می‌کنند:</p>
+              <ul>
+                <li><strong>الفبا:</strong> <code>0123456789abcdefghijklmnopqrstuvwxyz</code> (۳۶ کاراکتر).</li>
+                <li><strong>عدم حساسیت به حروف کوچک و بزرگ:</strong> هر دو شکل <code>6gq46u</code> و <code>6GQ46U</code> به یک عدد مشخص (<code>390889398</code>) اشاره دارند.</li>
+                <li><strong>امن برای آدرس وب و تلفن:</strong> فاقد خط تیره یا نشانه‌های خاص، مناسب برای خواندن تلفنی، پیامک و لینک‌ها.</li>
+                <li><strong>طول بهینه:</strong> با ۶ کاراکتر شروع شده و برای قرن‌ها حداکثر به ۱۲ کاراکتر می‌رسد.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 3: Cryptographic Secret & API Token -->
           <div class="spec-card">
             <h3>
               <svg class="icon icon-success" viewBox="0 0 24 24"><use href="#lock"></use></svg>
-              <span data-i18n="spec.secret_title">2. Secret &amp; API Regex</span>
+              <span>3. 256-Bit Secret &amp; API Regex</span>
             </h3>
-            <p data-i18n="spec.secret_desc">256-bit security hash and standardized authorization token regex:</p>
-            <ul>
-              <li><strong>Secret:</strong> 32 CSPRNG bytes in Base62 (43 alphanumeric chars)</li>
-              <li><strong>Token:</strong> <code>"&lt;account id&gt;:&lt;account secret&gt;"</code></li>
-            </ul>
+            <div data-lang="en">
+              <p>Authentication decouples identification from authorization. Each account holds a 256-bit cryptographic secret encoded in Base62:</p>
+              <ul>
+                <li><strong>CSPRNG Entropy:</strong> 32 secure random bytes (256 bits, equivalent to AES-256).</li>
+                <li><strong>Base62 Encoding:</strong> Big-endian conversion (<code>0-9A-Za-z</code>) fixed to exactly 43 characters.</li>
+                <li><strong>Account Token:</strong> Formatted as <code>"&lt;account id&gt;:&lt;account secret&gt;"</code>.</li>
+              </ul>
+            </div>
+            <div data-lang="fa">
+              <p>احراز هویت، شناسه کاربری را از رمز دسترسی جدا می‌کند. هر حساب دارای یک رمز ۲۵۶ بیتی امنیتی بر مبنای Base62 است:</p>
+              <ul>
+                <li><strong>آنتروپی امنیتی:</strong> ۳۲ بایت تصادفی رمزنگاری‌شده (۲۵۶ بیت، هم‌تراز با استاندارد AES-256).</li>
+                <li><strong>کدگذاری Base62:</strong> تبدیل با الفبای <code>0-9A-Za-z</code> با طول ثابت دقیقاً ۴۳ کاراکتر.</li>
+                <li><strong>توکن حساب:</strong> به قالب <code>"&lt;account id&gt;:&lt;account secret&gt;"</code> ساخته می‌شود.</li>
+              </ul>
+            </div>
             <div class="code-box-mini">
               <span>^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$</span>
               <button type="button" class="copy-btn" onclick="copySnippet('^[0-9a-z]{6,12}:[0-9a-zA-Z]{43}$', this)">
@@ -371,7 +487,7 @@
             </div>
           </div>
 
-          <!-- Card 3: Genesis Epoch Decision -->
+          <!-- Card 4: The Genesis Epoch Decision (Why 2026-09-22?) -->
           <div class="spec-card full-width">
             <div class="spec-card-head">
               <h3>
@@ -380,22 +496,187 @@
               </h3>
               <span class="badge" data-i18n="spec.decision_badge">Day 0 Offset</span>
             </div>
-            <!-- Dual English/Persian templates toggled purely by CSS -->
-            <p data-lang="en">The first day of Mehr being released was <strong>2026-09-23</strong> (which corresponds to <strong>2585-07-01</strong>, or 1 Mehr 2585). MUID starts exactly one day before the release date to anchor the timeline cleanly at <strong>Day 0</strong> (which then becomes <strong>2585-06-31</strong> or <strong>2026-09-22</strong>):</p>
-            <p data-lang="fa">نخستین روز انتشار رسمی مهر، تاریخ <strong>۲۰۲۶-۰۹-۲۳</strong> برابر با <strong>۲۵۸۵-۰۷-۰۱</strong> (۱ مهر ۲۵۸۵) است. مبدا زمانی MUID دقیقا یک روز قبل آغاز می‌شود تا چرخه شناسه‌ها از <strong>روز صفر</strong> (برابر با <strong>۲۵۸۵-۰۶-۳۱</strong> یا <strong>۲۰۲۶-۰۹-۲۲</strong>) پایه‌گذاری شود:</p>
+            <p data-lang="en">The official public launch of the Mehr network was scheduled for <strong>2026-09-23</strong> (corresponding to <strong>2585-07-01</strong>, or 1 Mehr 2585 in the Imperial calendar / 1405 SH). The MUID timeline begins exactly one day earlier at <strong>2026-09-22 00:00:00 (UTC+3:30)</strong> to anchor the epoch at <strong>Day 0</strong> (corresponding to <strong>2585-06-31</strong> / 31 Shahrivar):</p>
+            <p data-lang="fa">تاریخ انتشار رسمی و عمومی شبکه مهر، روز <strong>۲۰۲۶-۰۹-۲۳</strong> برابر با <strong>۲۵۸۵-۰۷-۰۱</strong> (۱ مهر ۲۵۸۵ گاه‌شماری شاهنشاهی / ۱۴۰۵ خورشیدی) تعیین شد. مبدا زمانی MUID دقیقا یک روز قبل در <strong>۲۰۲۶-۰۹-۲۲ ۰۰:۰۰:۰۰ (UTC+3:30)</strong> آغاز می‌شود تا تقویم شناسه‌ها بر روی <strong>روز صفر</strong> (برابر با <strong>۲۵۸۵-۰۶-۳۱</strong> / ۳۱ شهریور) پایه‌گذاری گردد:</p>
             <div class="decision-grid">
               <div class="decision-step">
                 <div class="step-label" data-i18n="spec.step0_label">Day 0 · Genesis Epoch</div>
-                <div class="step-date">2026-09-22 <span class="dim">· 2585-06-31 (31 Shahrivar)</span></div>
+                <div class="step-date">2026-09-22 <span class="dim">&middot; 2585-06-31 (31 Shahrivar)</span></div>
                 <p class="step-desc" data-i18n="spec.step0_desc">The timeline begins at 00:00:00 (UTC+3:30) (Unix timestamp 1790022600). Genesis state, system bootstrapping, and initial node migrations execute cleanly within this 0-indexed day without producing negative offsets.</p>
               </div>
               <div class="decision-step">
                 <div class="step-label" data-i18n="spec.step1_label">Day 1 · Official Release</div>
-                <div class="step-date">2026-09-23 <span class="dim">· 2585-07-01 (1 Mehr)</span></div>
+                <div class="step-date">2026-09-23 <span class="dim">&middot; 2585-07-01 (1 Mehr)</span></div>
                 <p class="step-desc" data-i18n="spec.step1_desc">The official release of Mehr begins. User accounts created on launch day start from Day 1 (after 86,400s), ensuring all public identifiers follow clean positive natural numbers.</p>
               </div>
             </div>
           </div>
+
+          <!-- Card 5: Database Schema & Storage Efficiency -->
+          <div class="spec-card full-width">
+            <div class="spec-card-head">
+              <h3>
+                <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#hash"></use></svg>
+                <span>4. Database Architecture &amp; Production DDL</span>
+              </h3>
+              <span class="badge">Zero Index Fragmentation</span>
+            </div>
+            <div data-lang="en">
+              <p>Because MUID is time-ordered (K-sortable), B-tree primary key indexes append monotonically at the right leaf edge. This avoids random B-tree page splits, reduces WAL volume, and cuts disk consumption by 50% compared to 128-bit UUIDs.</p>
+            </div>
+            <div data-lang="fa">
+              <p>به دلیل ساختار ترتیبی مبتنی بر زمان (K-sortable)، ایندکس‌های درخت B پایگاه داده به صورت ترتیبی رشد می‌کنند. این امر از شکستن تصادفی صفحات حافظه جلوگیری کرده و مصرف دیسک را در مقایسه با UUIDهای ۱۲۸ بیتی به نصف کاهش می‌دهد.</p>
+            </div>
+
+            <div class="ddl-grid">
+              <!-- PostgreSQL -->
+              <div class="ddl-item">
+                <div class="ddl-item-head">
+                  <span>PostgreSQL</span>
+                  <button type="button" class="copy-btn" onclick="copySnippet('CREATE TABLE accounts (\n  id BIGINT PRIMARY KEY,\n  secret CHAR(43) NOT NULL,\n  created_at TIMESTAMPTZ DEFAULT clock_timestamp()\n);', this)">
+                    <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                    <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+                  </button>
+                </div>
+                <pre class="ddl-code">CREATE TABLE accounts (
+  id BIGINT PRIMARY KEY,
+  secret CHAR(43) NOT NULL,
+  created_at TIMESTAMPTZ DEFAULT clock_timestamp()
+);</pre>
+              </div>
+
+              <!-- MySQL -->
+              <div class="ddl-item">
+                <div class="ddl-item-head">
+                  <span>MySQL / MariaDB</span>
+                  <button type="button" class="copy-btn" onclick="copySnippet('CREATE TABLE accounts (\n  id BIGINT UNSIGNED PRIMARY KEY,\n  secret CHAR(43) NOT NULL,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n) ENGINE=InnoDB;', this)">
+                    <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                    <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+                  </button>
+                </div>
+                <pre class="ddl-code">CREATE TABLE accounts (
+  id BIGINT UNSIGNED PRIMARY KEY,
+  secret CHAR(43) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;</pre>
+              </div>
+
+              <!-- SQLite -->
+              <div class="ddl-item">
+                <div class="ddl-item-head">
+                  <span>SQLite</span>
+                  <button type="button" class="copy-btn" onclick="copySnippet('CREATE TABLE accounts (\n  id INTEGER PRIMARY KEY,\n  secret TEXT NOT NULL,\n  created_at DATETIME DEFAULT CURRENT_TIMESTAMP\n);', this)">
+                    <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                    <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+                  </button>
+                </div>
+                <pre class="ddl-code">CREATE TABLE accounts (
+  id INTEGER PRIMARY KEY,
+  secret TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);</pre>
+              </div>
+
+              <!-- ClickHouse -->
+              <div class="ddl-item">
+                <div class="ddl-item-head">
+                  <span>ClickHouse</span>
+                  <button type="button" class="copy-btn" onclick="copySnippet('CREATE TABLE accounts (\n  id UInt64,\n  secret FixedString(43),\n  created_at DateTime DEFAULT now()\n) ENGINE = MergeTree() ORDER BY id;', this)">
+                    <svg class="icon icon-copy" viewBox="0 0 24 24"><use href="#copy"></use></svg>
+                    <svg class="icon icon-check" viewBox="0 0 24 24"><use href="#check"></use></svg>
+                  </button>
+                </div>
+                <pre class="ddl-code">CREATE TABLE accounts (
+  id UInt64,
+  secret FixedString(43),
+  created_at DateTime DEFAULT now()
+) ENGINE = MergeTree() ORDER BY id;</pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Architecture Comparison Matrix -->
+          <div class="spec-card full-width">
+            <div class="spec-card-head">
+              <h3>
+                <svg class="icon icon-accent" viewBox="0 0 24 24"><use href="#zap"></use></svg>
+                <span>5. System Comparison Matrix</span>
+              </h3>
+              <span class="badge">Standard Evaluation</span>
+            </div>
+            <div class="table-responsive">
+              <table class="spec-table">
+                <thead>
+                  <tr>
+                    <th>Identifier System</th>
+                    <th>Storage Size</th>
+                    <th>Public Representation</th>
+                    <th>Case Sensitivity</th>
+                    <th>K-Sortable</th>
+                    <th>Decoupled Secret</th>
+                    <th>Collision Strategy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="highlight-row">
+                    <td>Mehr Unique ID (MUID)</td>
+                    <td>8 Bytes (BigInt)</td>
+                    <td>Base36 (6–12 chars)</td>
+                    <td><span class="pill-sm yes">Insensitive</span></td>
+                    <td><span class="pill-sm yes">Yes</span></td>
+                    <td><span class="pill-sm yes">256-bit Built-in</span></td>
+                    <td>10,000 slots / sec / node</td>
+                  </tr>
+                  <tr>
+                    <td>UUIDv4 (RFC 4122)</td>
+                    <td>16 Bytes</td>
+                    <td>Hex Hyphenated (36 chars)</td>
+                    <td><span class="pill-sm yes">Insensitive</span></td>
+                    <td><span class="pill-sm no">No (Random)</span></td>
+                    <td><span class="pill-sm no">None</span></td>
+                    <td>122 bits pseudo-random</td>
+                  </tr>
+                  <tr>
+                    <td>UUIDv7 (RFC 9562)</td>
+                    <td>16 Bytes</td>
+                    <td>Hex Hyphenated (36 chars)</td>
+                    <td><span class="pill-sm yes">Insensitive</span></td>
+                    <td><span class="pill-sm yes">Yes (ms)</span></td>
+                    <td><span class="pill-sm no">None</span></td>
+                    <td>Unix ms + sub-ms random</td>
+                  </tr>
+                  <tr>
+                    <td>ULID</td>
+                    <td>16 Bytes</td>
+                    <td>Crockford Base32 (26 chars)</td>
+                    <td><span class="pill-sm yes">Insensitive</span></td>
+                    <td><span class="pill-sm yes">Yes (ms)</span></td>
+                    <td><span class="pill-sm no">None</span></td>
+                    <td>80-bit random per ms</td>
+                  </tr>
+                  <tr>
+                    <td>Twitter Snowflake</td>
+                    <td>8 Bytes</td>
+                    <td>Decimal String (19 chars)</td>
+                    <td><span class="pill-sm neutral">Numeric</span></td>
+                    <td><span class="pill-sm yes">Yes (ms)</span></td>
+                    <td><span class="pill-sm no">None</span></td>
+                    <td>Coordinated Node ID + Seq</td>
+                  </tr>
+                  <tr>
+                    <td>NanoID</td>
+                    <td>Variable (16–21 B)</td>
+                    <td>Custom Base64 (21 chars)</td>
+                    <td><span class="pill-sm no">Sensitive</span></td>
+                    <td><span class="pill-sm no">No (Random)</span></td>
+                    <td><span class="pill-sm no">None</span></td>
+                    <td>Uniform distribution</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
